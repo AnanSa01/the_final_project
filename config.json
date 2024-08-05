@@ -1,0 +1,19 @@
+{
+  "base_url": "http://127.0.0.1:8000",
+  "base_url_login": "http://127.0.0.1:8000/#/login",
+  "browser": "Chrome",
+  "header": {"authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI1MzQ0MzAwLCJqdGkiOiI0NmJkYWVjMTczYzI0MzU5YTQzY2ZmODdkOGYzMTZjYSIsInVzZXJfaWQiOjh9.vdkb08N27Ka3be9_bj05XaCtD0jRN0fWwIIMga2Mrug"},
+  "name_input": "aaa",
+  "email_input": "aaafortesting@gmail.com",
+  "password_input": "aaafortesting123456789",
+  "payload_for_login_api": {"username": "aaafortesting@gmail.com", "password": "aaafortesting123456789"},
+  "payload_for_invalid_login_api": {"username": "aaafortesting@gmail.com", "password": "00000"},
+  "fake_credit_card_name": "Mastercard",
+  "fake_credit_card_number": "2223000048410010",
+  "fake_credit_card_expire_date": "09/2026",
+  "add_rating_item": "21/reviews/",
+  "poc_product_search": "Bleach - Ichigo Kurosaki Honor T-Shirt",
+  "payload_for_poc": {"rating": "5", "comment": "this product is very nice!"},
+  "search_for_item": "Fullmetal Alchemist - Group Vs. Pride Mug",
+  "search_for_item_encoded": "Fullmetal%20Alchemist%20-%20Group%20Vs.%20Pride%20Mug&page=1"
+}
