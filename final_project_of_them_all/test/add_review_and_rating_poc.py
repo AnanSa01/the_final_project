@@ -1,14 +1,13 @@
-import time
 import unittest
 
-from infra.api.api_wrapper import APIWrapper
-from infra.config_provider import ConfigProvider
-from infra.ui.browser_wrapper import BrowserWrapper
-from logic.api.add_rating import AddRating
-from logic.ui.home_page import HomePage
-from logic.ui.login_page import LoginPage
-from logic.ui.product_page import ProductPage
-from logic.ui.search_page import SearchPage
+from final_project_of_them_all.infra.api.api_wrapper import APIWrapper
+from final_project_of_them_all.infra.config_provider import ConfigProvider
+from final_project_of_them_all.infra.ui.browser_wrapper import BrowserWrapper
+from final_project_of_them_all.logic.api.add_rating import AddRating
+from final_project_of_them_all.logic.ui.home_page import HomePage
+from final_project_of_them_all.logic.ui.login_page import LoginPage
+from final_project_of_them_all.logic.ui.product_page import ProductPage
+from final_project_of_them_all.logic.ui.search_page import SearchPage
 
 
 class MyTestCase(unittest.TestCase):

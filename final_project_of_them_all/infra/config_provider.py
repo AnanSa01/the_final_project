@@ -1,7 +1,5 @@
 import json
 import logging
-from infra.logging_basicConfig import LoggingSetup
-import infra.utilities
 
 
 class ConfigProvider:

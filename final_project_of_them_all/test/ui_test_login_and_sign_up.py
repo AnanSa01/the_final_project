@@ -1,13 +1,12 @@
 import logging
 import unittest
 
-from infra.logging_basicConfig import LoggingSetup
-from infra.ui.browser_wrapper import BrowserWrapper
-from logic.ui.home_page import HomePage
-from logic import utilities as UT
-from infra.utilities import Utilities
-from logic.ui.login_page import LoginPage
-from logic.ui.sign_up_page import SignUpPage
+from final_project_of_them_all.infra.ui.browser_wrapper import BrowserWrapper
+from final_project_of_them_all.logic.ui.home_page import HomePage
+from final_project_of_them_all.logic import utilities as UT
+from final_project_of_them_all.infra.utilities import Utilities
+from final_project_of_them_all.logic.ui.login_page import LoginPage
+from final_project_of_them_all.logic.ui.sign_up_page import SignUpPage
 
 
 class MyTestCase(unittest.TestCase):

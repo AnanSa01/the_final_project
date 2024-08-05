@@ -1,10 +1,10 @@
 import unittest
 
-from infra.ui.browser_wrapper import BrowserWrapper
-from logic.ui.home_page import HomePage
-from logic.ui.login_page import LoginPage
-from logic import utilities as UT
-from logic.ui.search_page import SearchPage
+from final_project_of_them_all.infra.ui.browser_wrapper import BrowserWrapper
+from final_project_of_them_all.logic.ui.home_page import HomePage
+from final_project_of_them_all.logic.ui.login_page import LoginPage
+from final_project_of_them_all.logic import utilities as UT
+from final_project_of_them_all.logic.ui.search_page import SearchPage
 
 
 class MyTestCase(unittest.TestCase):

@@ -1,7 +1,7 @@
 from selenium.common.exceptions import *
 from selenium.webdriver.common.by import By
 
-from logic.ui.base_page_app import BasePageApp
+from final_project_of_them_all.logic.ui.base_page_app import BasePageApp
 
 
 class LoginPage(BasePageApp):

@@ -1,6 +1,6 @@
 import requests
 
-from infra.api.response_wrapper import ResponseWrapper
+from final_project_of_them_all.infra.api.response_wrapper import ResponseWrapper
 
 
 class APIWrapper:

@@ -1,9 +1,8 @@
 import unittest
-from infra.logging_basicConfig import LoggingSetup
 
-from infra.api.api_wrapper import APIWrapper
-from logic import utilities as UT
-from logic.api.signing_in import SigningIn
+from final_project_of_them_all.infra.api.api_wrapper import APIWrapper
+from final_project_of_them_all.logic import utilities as UT
+from final_project_of_them_all.logic.api.signing_in import SigningIn
 
 
 class MyTestCase(unittest.TestCase):

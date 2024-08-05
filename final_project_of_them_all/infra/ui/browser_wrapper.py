@@ -1,10 +1,8 @@
 import logging
 
-from infra.logging_basicConfig import LoggingSetup
 from selenium import webdriver
-from infra.config_provider import ConfigProvider
 from selenium.common.exceptions import *
-from logic import utilities as UT
+from final_project_of_them_all.logic import utilities as UT
 
 
 class BrowserWrapper:

@@ -1,4 +1,4 @@
-from logic import utilities as UT
+from final_project_of_them_all.logic import utilities as UT
 
 
 class SearchForItem:

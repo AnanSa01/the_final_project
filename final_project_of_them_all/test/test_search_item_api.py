@@ -1,7 +1,7 @@
 import unittest
-from infra.api.api_wrapper import APIWrapper
-from logic import utilities as UT
-from logic.api.search_for_item import SearchForItem
+from final_project_of_them_all.infra.api.api_wrapper import APIWrapper
+from final_project_of_them_all.logic import utilities as UT
+from final_project_of_them_all.logic.api.search_for_item import SearchForItem
 
 
 class MyTestCase(unittest.TestCase):

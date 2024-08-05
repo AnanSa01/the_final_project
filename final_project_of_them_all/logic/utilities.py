@@ -2,8 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from infra.config_provider import ConfigProvider
-from infra.ui.browser_wrapper import BrowserWrapper
+from final_project_of_them_all.infra.config_provider import ConfigProvider
 
 
 class LoadCon:
