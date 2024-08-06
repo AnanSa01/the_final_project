@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class BasePageApp(BasePage):
     LOGIN_BUTTON = '//a[@href="#/login"]'
-    SETTINGS_BUTTON = '//a[@class="dropdown-toggle nav-link"]'
+    USERNAME_BUTTON = '//a[@id="username"]'
     PROFILE_BUTTON = '//div[@class="dropdown-menu show"]//a[@href="#/profile"]'
     LOGOUT_BUTTON = '//div[@class="dropdown-menu show"]//a[@href="#"]'
     SEARCH_BAR = '//input[@class="mr-sm-2 ml-sm-5 form-control"]'
@@ -20,7 +20,6 @@ class BasePageApp(BasePage):
         super().__init__(driver)
         try:
             self._login_button = self._driver.find_element(By.XPATH, self.LOGIN_BUTTON)
-            self._settings_button = self._driver.find_element(By.XPATH, self.SETTINGS_BUTTON)
             self._logo_button = self._driver.find_element(By.XPATH, self.LOGO_BUTTON)
 
         except NoSuchElementException:
@@ -30,14 +29,15 @@ class BasePageApp(BasePage):
         self._login_button.click()
 
     def click_on_settings_button_in_header(self):
+        self._settings_button = self._driver.find_element(By.XPATH, self.USERNAME_BUTTON)
         self._settings_button.click()
 
-    def click_on_profile_button_in_header(self):
+    def click_on_profile_button_flow_in_header(self):
         self.click_on_settings_button_in_header()
         self._profile_button = self._driver.find_element(By.XPATH, self.PROFILE_BUTTON)
         self._profile_button.click()
 
-    def click_on_logout_button_in_header(self):
+    def click_on_logout_button_flow_in_header(self):
         self.click_on_settings_button_in_header()
         self._logout_button = self._driver.find_element(By.XPATH, self.LOGOUT_BUTTON)
         self._logout_button.click()
@@ -47,14 +47,8 @@ class BasePageApp(BasePage):
         self._cart_button.click()
 
     def search_flow(self, search_input):
-        # WebDriverWait(self._driver, 10).until(
-        #     EC.visibility_of_element_located((By.XPATH, self.SEARCH_BAR)))
-        # self._search_bar = self._driver.find_element(By.XPATH, self.SEARCH_BAR)
         self.search_bar_function()
         self._search_bar.send_keys(search_input)
-        # WebDriverWait(self._driver, 10).until(
-        #     EC.visibility_of_element_located((By.XPATH, self.SEARCH_SUBMIT_BUTTON)))
-        # self._search_submit_button = self._driver.find_element(By.XPATH, self.SEARCH_SUBMIT_BUTTON)
         self.search_submit_button_function()
         self._search_submit_button.click()
 

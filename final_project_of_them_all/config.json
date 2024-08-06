@@ -10,7 +10,7 @@
   "payload_for_invalid_login_api": {"username": "aaafortesting@gmail.com", "password": "00000"},
   "fake_credit_card_name": "Mastercard",
   "fake_credit_card_number": "2223000048410010",
-  "fake_credit_card_expire_date": "09/2026",
+  "fake_credit_card_expire_date": "09/26",
   "add_rating_item": "21/reviews/",
   "poc_product_search": "Bleach - Ichigo Kurosaki Honor T-Shirt",
   "payload_for_poc": {"rating": "5", "comment": "this product is very nice!"},
@@ -20,5 +20,7 @@
   "shipping_address_input": "Street 11",
   "shipping_city_input": "Hourfiesh",
   "shipping_postal_code_input":"25155",
-  "shipping_country_input": "Israel"
+  "shipping_country_input": "Israel",
+  "update_profile_information_payload": {"id": "8", "name": "aaa", "email": "aaafortesting@gmail.com" ,
+                                         "password": "aaafortesting55555"}
 }

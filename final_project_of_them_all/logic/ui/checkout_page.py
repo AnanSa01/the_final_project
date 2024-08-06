@@ -1,5 +1,6 @@
 import time
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -14,7 +15,7 @@ class CheckoutPage(BasePageApp):
     CONTINUE_BUTTON = '//button[@class="my-3 btn btn-primary"]'
     METHOD_CONTINUE_BUTTON = '//button[@class="my-3 btn btn-primary"]'
     PLACE_ORDER_BUTTON = '//button[@class="w-100 btn btn-primary"]'
-    CHOOSE_CREDIT_CARD_BUTTON = '//div[@data-funding-source="card"]//div'
+    CREDIT_CARD_BUTTON = '//span[text()="Debit or Credit Card"]'
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -23,6 +24,7 @@ class CheckoutPage(BasePageApp):
         self._postal_code_input = self._driver.find_element(By.XPATH, self.POSTAL_CODE_INPUT)
         self._country_input = self._driver.find_element(By.XPATH, self.COUNTRY_INPUT)
         self._continue_button = self._driver.find_element(By.XPATH, self.CONTINUE_BUTTON)
+
 
     def write_in_address_input(self, address):
         self._address_input.send_keys(address)
@@ -56,8 +58,15 @@ class CheckoutPage(BasePageApp):
 
     def click_on_credit_card_button(self):
         WebDriverWait(self._driver, 10).until(
-            EC.visibility_of_element_located((By.XPATH, self.CHOOSE_CREDIT_CARD_BUTTON)))
-        self._credit_card_button = self._driver.find_element(By.XPATH, self.CHOOSE_CREDIT_CARD_BUTTON)
+            EC.frame_to_be_available_and_switch_to_it((By.XPATH, "//iframe[@id='jsx-iframe-0778a02376']")))
+        self._iframe = self._driver.find_element(By.XPATH, "//iframe[@id='jsx-iframe-0778a02376']")
+        self._driver.switch_to.frame(self._iframe)
+
+        self._credit_card_button = self._driver.find_element(By.XPATH, self.CREDIT_CARD_BUTTON)
         self._credit_card_button.click()
+        action_chains = ActionChains(self._driver)
+        action_chains.double_click(self._credit_card_button).perform()
+        action_chains.click_and_hold(self._credit_card_button).perform()
+
 
 

@@ -36,7 +36,6 @@ class MyTestCase(unittest.TestCase):
         self.checkout_page.click_on_method_continue()
         self.checkout_page.click_on_place_order_button()
         self.checkout_page.click_on_credit_card_button()
-        time.sleep(10)
 
 
 if __name__ == '__main__':

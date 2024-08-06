@@ -20,3 +20,8 @@ class APIWrapper:
     def post_request(url, headers=None, body=None):
         response = requests.post(url, headers=headers, json=body)
         return ResponseWrapper(ok=response.ok, status_code=response.status_code, body=response.json())
+
+    @staticmethod
+    def put_request(url, headers=None, body=None):
+        response = requests.put(url, headers=headers, json=body)
+        return ResponseWrapper(ok=response.ok, status_code=response.status_code, body=response.json())

@@ -5,6 +5,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from final_project_of_them_all.infra.config_provider import ConfigProvider
 
 
+
+
 class LoadCon:
     """
     this function to load the json file in a fast and efficient way
@@ -12,7 +14,7 @@ class LoadCon:
 
     @staticmethod
     def return_config():
-        return ConfigProvider.load_from_file("../config.json")
+        return ConfigProvider.load_from_file('../../config.json')
 
     # @staticmethod
     # def return_secret():

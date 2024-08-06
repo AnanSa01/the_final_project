@@ -7,6 +7,7 @@ from final_project_of_them_all.logic.ui.login_page import LoginPage
 from final_project_of_them_all.logic.ui.product_page import ProductPage
 
 
+
 class MyTestCase(unittest.TestCase):
 
     def setUp(self):

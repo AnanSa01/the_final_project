@@ -24,7 +24,7 @@ class MyTestCase(unittest.TestCase):
         self.browser = BrowserWrapper()
         self.driver = self.browser.get_driver(self.browser.config["base_url_login"])
         self.login_page = LoginPage(self.driver)
-        self.config = ConfigProvider.load_from_file('../config.json')
+        self.config = ConfigProvider.load_from_file('../../config.json')
         self.login_page.write_in_email_input_field(self.config["email_input"])
         self.login_page.write_in_password_input_field(self.config["password_input"])
         self.login_page.click_on_sign_in_button()
