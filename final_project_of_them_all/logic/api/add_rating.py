@@ -1,4 +1,5 @@
 from final_project_of_them_all.infra.config_provider import ConfigProvider
+from final_project_of_them_all.logic.utilities import LoadCon
 
 
 class AddRating:
@@ -8,7 +9,7 @@ class AddRating:
         :param request: request to get API data
         """
         self._request = request
-        self.config = ConfigProvider.load_from_file('../config.json')
+        self.config = LoadCon.return_config()
 
     def add_rating_api(self):
         """
