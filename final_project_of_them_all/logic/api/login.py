@@ -1,4 +1,4 @@
-from final_project_of_them_all.logic import utilities as UT
+from final_project_of_them_all.logic.utilities import LoadCon
 
 
 class SigningIn:
@@ -8,7 +8,7 @@ class SigningIn:
         :param request: request to get API data
         """
         self._request = request
-        self.config = UT.LoadCon.return_config()
+        self.config = LoadCon.return_config()
 
     def signing_in_api(self, payload):
         """

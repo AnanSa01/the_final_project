@@ -2,7 +2,7 @@ import unittest
 
 from final_project_of_them_all.infra.api.api_wrapper import APIWrapper
 from final_project_of_them_all.logic import utilities as UT
-from final_project_of_them_all.logic.api.signing_in import SigningIn
+from final_project_of_them_all.logic.api.login import SigningIn
 
 
 class MyTestCase(unittest.TestCase):
