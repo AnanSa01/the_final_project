@@ -35,7 +35,7 @@ class CheckoutPage(BasePageApp):
     BILLING_ZIP_CODE_INPUT = '//input[@id="billingAddress.postcode"]'
     BILLING_MOBILE_INPUT = '//input[@id="phone"]'
     BILLING_EMAIL_INPUT = '//input[@id="email"]'
-    BILLING_SUBMIT_BUTTON = '//button[@id="submit-button"]'
+    BILLING_SUBMIT_BUTTON = '//form//div//button[contains(text(), "Pay Now")]'
     IFRAME_CARD_FORM = '//iframe[@title="paypal_card_form"]'
 
     def __init__(self, driver):
@@ -110,14 +110,12 @@ class CheckoutPage(BasePageApp):
         self._choose_country.click()
 
     def billing_country_flow(self, country_input):
-        WebDriverWait(self._driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, self.BILLING_COUNTRY_BUTTON)))
-        WebDriverWait(self._driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, self.BILLING_COUNTRY_BUTTON)))
-        WebDriverWait(self._driver, 10).until(
-            EC.visibility_of_element_located((By.XPATH, self.BILLING_COUNTRY_BUTTON)))
-
-
+        # WebDriverWait(self._driver, 10).until(
+        #     EC.element_to_be_clickable((By.XPATH, self.BILLING_COUNTRY_BUTTON)))
+        # WebDriverWait(self._driver, 10).until(
+        #     EC.presence_of_element_located((By.XPATH, self.BILLING_COUNTRY_BUTTON)))
+        # WebDriverWait(self._driver, 10).until(
+        #     EC.visibility_of_element_located((By.XPATH, self.BILLING_COUNTRY_BUTTON)))
 
         change_country = Select(self._driver.find_element(By.XPATH, self.BILLING_COUNTRY_BUTTON))
         change_country.select_by_visible_text(country_input)
@@ -135,6 +133,7 @@ class CheckoutPage(BasePageApp):
     def billing_write_in_csc(self, csc_input):
         self._csc = self._driver.find_element(By.XPATH, self.BILLING_CSC_INPUT)
         self._csc.send_keys(csc_input)
+        time.sleep(1)
 
     def billing_write_in_first_name(self, first_name_input):
         self._first_name = self._driver.find_element(By.XPATH, self.BILLING_FIRST_NAME_INPUT)
@@ -172,11 +171,13 @@ class CheckoutPage(BasePageApp):
         self._submit_button = self._driver.find_element(By.XPATH, self.BILLING_SUBMIT_BUTTON)
         self._submit_button.click()
 
-    def billing_flow(self, country_input, card_number_input, expires_date_input, csc_input, first_name_input, last_name_input, street_input, more_details_input, city_input, zip_code_input, mobile_input, email_input):
+    def billing_flow(self, country_input, card_number_input, expires_date_input, csc_input, first_name_input,
+                     last_name_input, street_input, more_details_input, city_input, zip_code_input, mobile_input,
+                     email_input):
         iframe_form_element = WebDriverWait(self._driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, self.IFRAME_CARD_FORM)))
         self._driver.switch_to.frame(iframe_form_element)
-
+        self.billing_country_flow(country_input)
         self.billing_write_in_card_number(card_number_input)
         self.billing_write_in_expires_date(expires_date_input)
         self.billing_write_in_csc(csc_input)
@@ -186,12 +187,6 @@ class CheckoutPage(BasePageApp):
         self.billing_write_in_more_details(more_details_input)
         self.billing_write_in_city(city_input)
         self.billing_write_in_zip_code(zip_code_input)
-        self.billing_write_in_mobile_number(mobile_input)
         self.billing_write_in_email(email_input)
-        self.billing_country_flow(country_input)
+        self.billing_write_in_mobile_number(mobile_input)
         self.billing_click_on_submit_button()
-
-
-
-
-
