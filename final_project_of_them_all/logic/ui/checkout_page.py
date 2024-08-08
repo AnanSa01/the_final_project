@@ -18,9 +18,7 @@ class CheckoutPage(BasePageApp):
     PLACE_ORDER_BUTTON = '//button[@class="w-100 btn btn-primary"]'
     IFRAME_CREDIT_CARD = "//div[@class='col-md-4']//iframe[@title='PayPal']"
     CREDIT_CARD_BUTTON_IN_IFRAME = '//div[@data-funding-source="card"]'
-
     BILLING_COUNTRY_BUTTON = '/html/body/div[1]/div/div/form/div/div[4]/div[1]/div/div/div/select'
-
     BILLING_CARD_NUMBER_INPUT = '//input[@id="credit-card-number"]'
     BILLING_EXPIRES_INPUT = '//input[@id="expiry-date"]'
     BILLING_CSC_INPUT = '//input[@id="credit-card-security"]'
@@ -29,14 +27,12 @@ class CheckoutPage(BasePageApp):
     BILLING_STREET_INPUT = '//input[@id="billingAddress.line1"]'
     BILLING_MORE_DETAILS_INPUT = '//input[@id="billingAddress.line2"]'
     BILLING_CITY_INPUT = '//input[@id="billingAddress.city"]'
-
-    BILLING_STATE_INPUT = '//select[@id="billingAddress.state"]'
-
     BILLING_ZIP_CODE_INPUT = '//input[@id="billingAddress.postcode"]'
     BILLING_MOBILE_INPUT = '//input[@id="phone"]'
     BILLING_EMAIL_INPUT = '//input[@id="email"]'
     BILLING_SUBMIT_BUTTON = '//form//div//button[contains(text(), "Pay Now")]'
     IFRAME_CARD_FORM = '//iframe[@title="paypal_card_form"]'
+    BILLING_SUCCESS = '//div[@class="fade alert alert-success show"]'
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -84,31 +80,6 @@ class CheckoutPage(BasePageApp):
             EC.visibility_of_element_located((By.XPATH, self.CREDIT_CARD_BUTTON_IN_IFRAME)))
         credit_card_button.click()
 
-    def billing_change_country_button(self):
-        #time.sleep(5)
-        self.scroll_down()
-        self.scroll_down()
-        self.scroll_down()
-        find = WebDriverWait(self._driver, 20).until(
-            EC.visibility_of_element_located((By.XPATH, self.BILLING_COUNTRY_BUTTON)))
-        print(find)
-
-        # self._change_country = WebDriverWait(self._driver, 10).until(
-        #     EC.element_to_be_clickable((By.XPATH, self.BILLING_COUNTRY_INPUT)))
-        change_country = Select(self._driver.find_element(By.XPATH, self.BILLING_COUNTRY_BUTTON))
-        change_country.select_by_visible_text("Israel")
-
-    def billing_change_state_button(self):
-        WebDriverWait(self._driver, 10).until(
-            EC.visibility_of_element_located((By.XPATH, self.BILLING_STATE_INPUT)))
-        self._change_state = self._driver.find_element(By.XPATH, self.BILLING_STATE_INPUT)
-        self._change_state.click()
-
-    def billing_choose_country(self, country_input):
-        xpath_for_country = f'//select[@id="billingAddress.country"]//option[contains(text(), {country_input})]'
-        self._choose_country = self._driver.find_element(By.XPATH, xpath_for_country)
-        self._choose_country.click()
-
     def billing_country_flow(self, country_input):
         # WebDriverWait(self._driver, 10).until(
         #     EC.element_to_be_clickable((By.XPATH, self.BILLING_COUNTRY_BUTTON)))
@@ -116,7 +87,7 @@ class CheckoutPage(BasePageApp):
         #     EC.presence_of_element_located((By.XPATH, self.BILLING_COUNTRY_BUTTON)))
         # WebDriverWait(self._driver, 10).until(
         #     EC.visibility_of_element_located((By.XPATH, self.BILLING_COUNTRY_BUTTON)))
-
+        time.sleep(2)
         change_country = Select(self._driver.find_element(By.XPATH, self.BILLING_COUNTRY_BUTTON))
         change_country.select_by_visible_text(country_input)
 
@@ -168,8 +139,18 @@ class CheckoutPage(BasePageApp):
         self._email.send_keys(email_input)
 
     def billing_click_on_submit_button(self):
-        self._submit_button = self._driver.find_element(By.XPATH, self.BILLING_SUBMIT_BUTTON)
+        self._submit_button = WebDriverWait(self._driver, 20).until(
+            EC.presence_of_element_located((By.XPATH, self.BILLING_SUBMIT_BUTTON)))
+        self._driver.execute_script("arguments[0].scrollIntoView();", self._submit_button)
+        time.sleep(2)
         self._submit_button.click()
+
+    def return_alert_message_in_purchase(self):
+        time.sleep(5)
+        WebDriverWait(self._driver, 10).until(
+            EC.text_to_be_present_in_element((By.XPATH, self.BILLING_SUCCESS)))
+        self.message_in_purchase = self._driver.find_element(By.XPATH, self.BILLING_SUCCESS)
+        return self.message_in_purchase.text
 
     def billing_flow(self, country_input, card_number_input, expires_date_input, csc_input, first_name_input,
                      last_name_input, street_input, more_details_input, city_input, zip_code_input, mobile_input,

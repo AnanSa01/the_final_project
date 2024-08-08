@@ -37,8 +37,17 @@ class MyTestCase(unittest.TestCase):
         self.checkout_page.click_on_method_continue()
         self.checkout_page.click_on_place_order_button()
         self.checkout_page.click_on_credit_card_button()
-        self.checkout_page.billing_flow(self.config["billing_country"], self.config["billing_fake_credit_card_number"], self.config["billing_fake_credit_card_expire_date"], IUT.generate_random_string_just_numbers(3), IUT.generate_random_string_just_text(5), IUT.generate_random_string_just_text(5), self.config["billing_street"], self.config["billing_more_details"], self.config["billing_city"],self.config["billing_zip_code"], self.config["billing_phone_number"], self.config["email_input"])
+        self.checkout_page.billing_flow(self.config["billing_country"], self.config["billing_fake_credit_card_number"],
+                                        self.config["billing_fake_credit_card_expire_date"],
+                                        IUT.generate_random_string_just_numbers(3),
+                                        IUT.generate_random_string_just_text(5),
+                                        IUT.generate_random_string_just_text(5), self.config["billing_street"],
+                                        self.config["billing_more_details"], self.config["billing_city"],
+                                        self.config["billing_zip_code"], self.config["billing_phone_number"],
+                                        self.config["email_input"])
+        self.assertIn("Paid on", self.checkout_page.return_alert_message_in_purchase())
         time.sleep(10)
+
 
 
 if __name__ == '__main__':

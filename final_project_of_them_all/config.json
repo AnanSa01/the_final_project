@@ -10,7 +10,7 @@
   "password_input": "aaafortesting123456789",
   "payload_for_login_api": {"username": "aaafortesting@gmail.com", "password": "aaafortesting123456789"},
   "payload_for_invalid_login_api": {"username": "aaafortesting@gmail.com", "password": "00000"},
-  "add_rating_item": "21/reviews/",
+  "add_rating_item_param": 21,
   "poc_product_search": "Bleach - Ichigo Kurosaki Honor T-Shirt",
   "payload_for_poc": {"rating": "5", "comment": "this product is very nice!"},
   "search_for_item": "Fullmetal Alchemist - Group Vs. Pride Mug",

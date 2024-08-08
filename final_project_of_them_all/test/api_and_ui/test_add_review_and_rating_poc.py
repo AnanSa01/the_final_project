@@ -17,10 +17,11 @@ class MyTestCase(unittest.TestCase):
         self._api_request = APIWrapper()
         self.config = LoadCon.return_config()
 
-
     def test_add_review_both(self):
         api_add_rating = AddRating(self._api_request)
-        result_of_add_rating_api = api_add_rating.add_rating_api()
+        item_id = self.config["add_rating_item_param"]
+        payload_for_poc = self.config["payload_for_poc"]
+        result_of_add_rating_api = api_add_rating.add_rating_api(item_id, payload_for_poc)
         print(result_of_add_rating_api.body)
 
         self.browser = BrowserWrapper()

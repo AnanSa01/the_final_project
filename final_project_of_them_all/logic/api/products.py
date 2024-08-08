@@ -1,7 +1,7 @@
 from final_project_of_them_all.logic.utilities import LoadCon
 
 
-class SearchForItem:
+class Products:
     def __init__(self, request):
         """
         all logic had the same __init__ , to make code more efficient I made them all inherent from the same page
@@ -10,9 +10,9 @@ class SearchForItem:
         self._request = request
         self.config = LoadCon.return_config()
 
-    def search_for_item_api(self):
+    def get_products_api(self):
         """
         this function returns given recommendations using GET
         """
         return self._request.get_request(
-            f"{self.config["base_url"]}/api/products/?keyword={self.config["search_for_item_encoded"]}", self.config["header"])
+            f"{self.config["base_url"]}/api/products/", self.config["header"])
