@@ -9,6 +9,7 @@ from final_project_of_them_all.logic.ui.base_page_app import BasePageApp
 class HomePage(BasePageApp):
     SUCCESSFUL_LOGIN_MESSAGE = '//h1[contains(text(), "Latest Products")]'
     CHOOSE_ITEM = '//img[@class="card-img"]'
+    NEXT_PAGE = '//a[@href="#/?keyword=&page=2"]'
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -37,3 +38,4 @@ class HomePage(BasePageApp):
             EC.visibility_of_element_located((By.XPATH, self.CHOOSE_ITEM)))
         self._choose_item = self._driver.find_element(By.XPATH, self.CHOOSE_ITEM)
         self._choose_item.click()
+
