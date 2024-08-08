@@ -81,13 +81,9 @@ class CheckoutPage(BasePageApp):
         credit_card_button.click()
 
     def billing_country_flow(self, country_input):
-        # WebDriverWait(self._driver, 10).until(
-        #     EC.element_to_be_clickable((By.XPATH, self.BILLING_COUNTRY_BUTTON)))
-        # WebDriverWait(self._driver, 10).until(
-        #     EC.presence_of_element_located((By.XPATH, self.BILLING_COUNTRY_BUTTON)))
-        # WebDriverWait(self._driver, 10).until(
-        #     EC.visibility_of_element_located((By.XPATH, self.BILLING_COUNTRY_BUTTON)))
-        time.sleep(2)
+        change_country = WebDriverWait(self._driver, 20).until(
+            EC.presence_of_element_located((By.XPATH, self.BILLING_SUBMIT_BUTTON)))
+        self._driver.execute_script("arguments[0].scrollIntoView();", change_country)
         change_country = Select(self._driver.find_element(By.XPATH, self.BILLING_COUNTRY_BUTTON))
         change_country.select_by_visible_text(country_input)
 
@@ -142,13 +138,14 @@ class CheckoutPage(BasePageApp):
         self._submit_button = WebDriverWait(self._driver, 20).until(
             EC.presence_of_element_located((By.XPATH, self.BILLING_SUBMIT_BUTTON)))
         self._driver.execute_script("arguments[0].scrollIntoView();", self._submit_button)
-        time.sleep(2)
+        time.sleep(3)
         self._submit_button.click()
+        time.sleep(3)
 
     def return_alert_message_in_purchase(self):
-        time.sleep(5)
-        WebDriverWait(self._driver, 10).until(
-            EC.text_to_be_present_in_element((By.XPATH, self.BILLING_SUCCESS)))
+        self._driver.switch_to.default_content()
+        self._submit_button = WebDriverWait(self._driver, 20).until(
+            EC.presence_of_element_located((By.XPATH, self.BILLING_SUCCESS)))
         self.message_in_purchase = self._driver.find_element(By.XPATH, self.BILLING_SUCCESS)
         return self.message_in_purchase.text
 
