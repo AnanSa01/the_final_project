@@ -3,7 +3,6 @@
   "base_url_login": "http://127.0.0.1:8000/#/login",
   "browser": "Chrome",
   "header": {"authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI1MzQ0MzAwLCJqdGkiOiI0NmJkYWVjMTczYzI0MzU5YTQzY2ZmODdkOGYzMTZjYSIsInVzZXJfaWQiOjh9.vdkb08N27Ka3be9_bj05XaCtD0jRN0fWwIIMga2Mrug"},
-  "jira_token": "ATATT3xFfGF0LpIlUK4jWRgzlJegpt3s4XRIgUWKmuNB02CDT5fLsU3L5v_od-KWNlcYhcNSRMltGPDARE4EJfzOKqIY6F_F1B5OHA3HPGXSOWVQqYn3h4Ce1gvnDOhw9uZRkPmduptahnhIxmUGTjnRwYnWtmQK9ZyAyzekDuV3-RKR0sJB6g4=EA285AC0",
   "name_input": "abcd",
   "last_name_input": "efgh",
   "update_name_input": "bbbbb",
