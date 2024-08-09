@@ -10,7 +10,7 @@ class ProfilePage(BasePageApp):
     PASSWORD_INPUT = '//input[@placeholder="Enter Password"]'
     RE_PASSWORD_INPUT = '//input[@placeholder="Confirm Password"]'
     UPDATE_BUTTON = '//button[@class="mt-3 btn btn-primary"]'
-    TITLE_TEXT = '//div[@class="col-md-3"]//h2'
+    TITLE_TEXT = '//div[contains(text(), "Successfully Updated")]'
 
     def __init__(self, driver):
         super().__init__(driver)

@@ -56,13 +56,6 @@ class AllRatings(BasePageApp):
 
     def check_all_ratings_for_item(self, driver, all_details_updated):
         list_check_true = []
-        # for i in range(5):
-        #     self.search_flow(all_details_updated[i][4])
-        #     self.search_page = SearchPage(driver)
-        #     self.search_page.click_on_first_result()
-        #     self.product_page = ProductPage(driver)
-        #     list_check_true.append(self.product_page.return_review_text() == all_details_updated[0][2])
-        #     driver.close()
 
         for i in range(5):
             self.search_flow(all_details_updated[i][4])
