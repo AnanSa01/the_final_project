@@ -43,7 +43,7 @@ class MyTestCase(unittest.TestCase):
         by checking if it is not empty.
         -----
         test case   #: 020
-        requirement #: 007
+        requirement #: 006
         """
         # Select an item and add it to the cart
         self.home_page.click_on_first_item()
