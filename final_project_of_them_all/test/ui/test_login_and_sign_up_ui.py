@@ -10,10 +10,23 @@ from final_project_of_them_all.logic.ui.sign_up_page import SignUpPage
 
 
 class MyTestCase(unittest.TestCase):
+    """
+    Test suite for verifying user login and sign-up functionalities.
 
+    Tests include:
+    - Valid login
+    - Login with missing password
+    - Login with missing email and password
+    - Sign-up with an already registered email
+    - Sign-up with invalid email format
+    - Sign-up with mismatched passwords
+    - Sign-up with a password that is too short
+    """
     def setUp(self):
         """
-        this setUp just for opening a browser with a selected driver
+        Set up the test environment.
+
+        Initializes the browser, loads configuration, and sets up the login page.
         """
         self.browser = BrowserWrapper()
         self.config = UT.LoadCon.return_config()
@@ -23,14 +36,18 @@ class MyTestCase(unittest.TestCase):
 
     def tearDown(self):
         """
-        this tearDown just for closing the browser after finishing testing.
+        Clean up after each test.
+
+        Closes the browser and logs the completion of the test.
         """
         self.driver.close()
         logging.info(f'---------- End of test. {self.browser.config["browser"]} web driver is closed. ----------\n')
 
     def test_valid_login(self):
         """
-        this function tests valid login input for a user.
+        Test case for valid login input.
+
+        This test verifies that a user can successfully log in with valid credentials.
         -----
         test case   #: 001
         requirement #: 001
@@ -45,7 +62,9 @@ class MyTestCase(unittest.TestCase):
 
     def test_not_adding_password_in_login(self):
         """
-        this function ensures the website does not connect when only entering user input without password.
+        Test case for login attempt without providing a password.
+
+        This test ensures that the system does not log in when the password field is empty.
         -----
         test case   #: 002
         requirement #: 002
@@ -58,7 +77,9 @@ class MyTestCase(unittest.TestCase):
 
     def test_not_adding_password_nor_email_in_login(self):
         """
-        this function ensures the website does not connect when NOT entering user input nor password.
+        Test case for login attempt without providing email and password.
+
+        This test ensures that the system does not log in when both email and password fields are empty.
         -----
         test case   #: 003
         requirement #: 002
@@ -70,7 +91,9 @@ class MyTestCase(unittest.TestCase):
 
     def test_sign_up_with_already_connected_user(self):
         """
-        this function tests trying to sign up with input of an already connected user.
+        Test case for sign-up with an already registered email.
+
+        This test verifies that the system does not allow a user to sign up with an email that is already registered.
         -----
         test case   #: 004
         requirement #: 003
@@ -88,7 +111,9 @@ class MyTestCase(unittest.TestCase):
 
     def test_invalid_email_sign_up(self):
         """
-        this function tests signing up with invalid email input.
+        Test case for sign-up with an invalid email format.
+
+        This test ensures that the system does not allow sign-up with an invalid email format.
         -----
         test case   #: 005
         requirement #: 003
@@ -105,7 +130,9 @@ class MyTestCase(unittest.TestCase):
 
     def test_password_not_match_re_enter_password(self):
         """
-        this function tests input of password not matching input of re-enter password.
+        Test case for sign-up with mismatched passwords.
+
+        This test verifies that the system does not allow sign-up when the password and re-entered password do not match.
         -----
         test case   #: 006
         requirement #: 003
@@ -124,7 +151,9 @@ class MyTestCase(unittest.TestCase):
 
     def test_password_too_short_to_enter(self):
         """
-        this function tests entering password that is too short (less than 6 characters).
+        Test case for sign-up with a password that is too short.
+
+        This test ensures that the system does not allow sign-up with a password shorter than the minimum required length (6 characters).
         -----
         test case   #: 007
         requirement #: 003
