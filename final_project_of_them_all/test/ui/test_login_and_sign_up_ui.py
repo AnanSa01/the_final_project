@@ -153,7 +153,7 @@ class MyTestCase(unittest.TestCase):
         """
         Test case for sign-up with a password that is too short.
 
-        This test ensures that the system does not allow sign-up with a password shorter than the minimum required length (6 characters).
+        This test ensures that the system does not allow sign-up with a password shorter than the minimum required length.
         -----
         test case   #: 007
         requirement #: 003
