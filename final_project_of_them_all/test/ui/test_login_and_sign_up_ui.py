@@ -116,7 +116,7 @@ class MyTestCase(unittest.TestCase):
         This test ensures that the system does not allow sign-up with an invalid email format.
         -----
         test case   #: 005
-        requirement #: 003
+        requirement #: 002
         """
         logging.info("---------- Initialize Test: invalid Email sign up ----------")
         self.login_page.click_to_go_to_sign_up_button()
