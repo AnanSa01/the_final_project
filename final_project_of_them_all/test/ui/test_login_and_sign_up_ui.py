@@ -166,7 +166,7 @@ class MyTestCase(unittest.TestCase):
         self.sign_up_page.enter_and_re_enter_password_flow(Utilities.generate_random_string_just_numbers(4))
         self.sign_up_page.click_on_register_button()
         self.assertTrue(self.sign_up_page.check_if_sign_up_alert_message_is_displayed(),
-                        "Error! Should NOT connect")
+                        "Error! Should NOT be able to connect")
         logging.info("assertTrue if alert message is displayed")
 
 
