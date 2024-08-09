@@ -12,8 +12,7 @@ from final_project_of_them_all.logic.utilities import LoadCon
 
 
 class MyTestCase(unittest.TestCase):
-
-    def test_all_ratings(self):
+    def setUp(self):
         self._api_request = APIWrapper()
 
         self.config = LoadCon.return_config()
@@ -22,57 +21,16 @@ class MyTestCase(unittest.TestCase):
         self.login_page = LoginPage(self.driver)
         self.login_page.login_flow(self.config["email_input"], self.config["password_input"])
         self.home_page = HomePage(self.driver)
+
+    def test_all_ratings(self):
         self.all_ratings = AllRatings(self.driver)
         all_details = self.all_ratings.give_to_five_items_rating(self._api_request)
-
-        print(f"\n{all_details}\n")
-
-
         api_get_products = Products(self._api_request)
         result_of_products = api_get_products.get_products_api()
         products = result_of_products.body["products"]
-
         all_details_updated = self.all_ratings.gather_all_details_for_items(all_details, products)
-        print(all_details_updated)
-
-        list_check_comment_true_ui = []
-        list_check_rating_true_api = []
-        for i in range(5):
-            self.home_page.search_flow(all_details_updated[i][4])
-            self.search_page = SearchPage(self.driver)
-            self.search_page.click_on_first_result()
-            self.product_page = ProductPage(self.driver)
-            list_check_comment_true_ui.append(all_details_updated[0][2] in self.product_page.return_review_text())
-            list_check_rating_true_api.append(products[all_details[i][3]] == all_details_updated[i][3])
-
-            self.driver.refresh()
-
-
-
-        # list_with_result_of_five_tests = self.all_ratings.check_all_ratings_for_item(self.driver, self.home_page,
-        #                                                                              all_details_updated)
-        print(list_check_comment_true_ui)
-        print(list_check_rating_true_api)
-
-
-        self.assertTrue(all(list_check_comment_true_ui))
-        self.assertTrue(all(list_check_rating_true_api))
-
-        # print()
-        # print(all_details_updated)
-        #
-        # self.home_page.search_flow(all_details_updated[0][4])
-        # self.search_page = SearchPage(self.driver)
-        # self.search_page.click_on_first_result()
-        # self.product_page = ProductPage(self.driver)
-        # self.assertEqual(self.product_page.return_review_text(), all_details_updated[0][2])
-
-        # for product in products:
-        #     for i in range(5):
-        #         if int(product["_id"]) == int(all_details[i][0]):
-        #             all_details[i].append(product["name"])
-
-        #print(all_true(my_list))
+        list_with_result_of_five_tests = self.all_ratings.check_all_ratings_for_item(self.driver, all_details_updated)
+        self.assertTrue(all(list_with_result_of_five_tests))
 
 
 if __name__ == '__main__':

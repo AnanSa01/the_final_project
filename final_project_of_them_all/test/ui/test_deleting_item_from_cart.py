@@ -22,7 +22,6 @@ class MyTestCase(unittest.TestCase):
         self.home_page = HomePage(self.driver)
 
     def tearDown(self):
-        self.cart_page.remove_item_from_cart()
         self.driver.close()
 
     def test_add_to_cart(self):
@@ -31,7 +30,10 @@ class MyTestCase(unittest.TestCase):
         self.product_page.click_on_add_to_cart_button()
         self.product_page.click_on_cart_button_in_header()
         self.cart_page = CartPage(self.driver)
-        self.assertTrue(self.cart_page.return_true_if_cart_not_empty())
+        self.cart_page.remove_item_from_cart()
+        self.assertTrue(self.cart_page.return_true_if_cart_is_empty())
+
+
 
 if __name__ == '__main__':
     unittest.main()

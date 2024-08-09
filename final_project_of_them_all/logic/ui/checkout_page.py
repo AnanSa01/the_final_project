@@ -33,6 +33,7 @@ class CheckoutPage(BasePageApp):
     BILLING_SUBMIT_BUTTON = '//form//div//button[contains(text(), "Pay Now")]'
     IFRAME_CARD_FORM = '//iframe[@title="paypal_card_form"]'
     BILLING_SUCCESS = '//div[@class="fade alert alert-success show"]'
+    ORDER_DETAILS = '/html/body/div/div/main/div/div[2]/div[1]/div/div[3]/div/div/div/div[3]'
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -79,6 +80,15 @@ class CheckoutPage(BasePageApp):
         credit_card_button = WebDriverWait(self._driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, self.CREDIT_CARD_BUTTON_IN_IFRAME)))
         credit_card_button.click()
+
+    def return_quantity_of_order_details(self):
+        WebDriverWait(self._driver, 10).until(
+            EC.visibility_of_element_located((By.XPATH, self.ORDER_DETAILS)))
+        self._order_details = self._driver.find_element(By.XPATH, self.ORDER_DETAILS)
+        quantity_value = self._order_details.text.split("X")
+        item_quantity = int(quantity_value[0])
+        return item_quantity
+
 
     def billing_country_flow(self, country_input):
         change_country = WebDriverWait(self._driver, 20).until(

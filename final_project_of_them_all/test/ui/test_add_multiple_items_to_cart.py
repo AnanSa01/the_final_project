@@ -22,16 +22,25 @@ class MyTestCase(unittest.TestCase):
         self.home_page = HomePage(self.driver)
 
     def tearDown(self):
-        self.cart_page.remove_item_from_cart()
         self.driver.close()
 
-    def test_add_to_cart(self):
+    def test_add_item_in_quantity_to_cart(self):
         self.home_page.click_on_first_item()
         self.product_page = ProductPage(self.driver)
+        quantity_input = random.randint(1, 10)
+        self.product_page.click_add_to_cart_in_quantity_flow(quantity_input)
         self.product_page.click_on_add_to_cart_button()
         self.product_page.click_on_cart_button_in_header()
         self.cart_page = CartPage(self.driver)
-        self.assertTrue(self.cart_page.return_true_if_cart_not_empty())
+        self.cart_page.click_on_proceed_to_checkout_button()
+        self.checkout_page = CheckoutPage(self.driver)
+        self.checkout_page.shipping_information_flow(self.config["shipping_address_input"],
+                                                     self.config["shipping_city_input"],
+                                                     self.config["shipping_postal_code_input"],
+                                                     self.config["shipping_country_input"])
+        self.checkout_page.click_on_method_continue()
+        self.assertEqual(quantity_input, self.checkout_page.return_quantity_of_order_details())
+
 
 if __name__ == '__main__':
     unittest.main()
