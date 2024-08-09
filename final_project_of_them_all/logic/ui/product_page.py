@@ -34,6 +34,7 @@ class ProductPage(BasePageApp):
         WebDriverWait(self._driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, self.REVIEW_TEXT)))
         self._review_text = self._driver.find_element(By.XPATH, self.REVIEW_TEXT)
+        print(self._review_text.text)
         return self._review_text.text
 
 

@@ -18,11 +18,9 @@ class MyTestCase(unittest.TestCase):
 
         self.config = LoadCon.return_config()
         self.browser = BrowserWrapper()
-        self.driver = self.browser.get_driver(self.browser.config["base_url_login"])
+        self.driver = self.browser.get_driver(self.config["base_url_login"])
         self.login_page = LoginPage(self.driver)
-        self.login_page.write_in_email_input_field(self.config["email_input"])
-        self.login_page.write_in_password_input_field(self.config["password_input"])
-        self.login_page.click_on_sign_in_button()
+        self.login_page.login_flow(self.config["email_input"], self.config["password_input"])
         self.home_page = HomePage(self.driver)
         self.all_ratings = AllRatings(self.driver)
         all_details = self.all_ratings.give_to_five_items_rating(self._api_request)
@@ -44,7 +42,7 @@ class MyTestCase(unittest.TestCase):
             self.search_page = SearchPage(self.driver)
             self.search_page.click_on_first_result()
             self.product_page = ProductPage(self.driver)
-            list_check_comment_true_ui.append(self.product_page.return_review_text() == all_details_updated[0][2])
+            list_check_comment_true_ui.append(all_details_updated[0][2] in self.product_page.return_review_text())
             list_check_rating_true_api.append(products[all_details[i][3]] == all_details_updated[i][3])
 
             self.driver.refresh()

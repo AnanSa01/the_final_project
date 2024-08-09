@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import *
 from selenium.webdriver.common.by import By
@@ -9,7 +11,7 @@ from final_project_of_them_all.logic.ui.base_page_app import BasePageApp
 class HomePage(BasePageApp):
     SUCCESSFUL_LOGIN_MESSAGE = '//h1[contains(text(), "Latest Products")]'
     CHOOSE_ITEM = '//img[@class="card-img"]'
-    NEXT_PAGE = '//a[@href="#/?keyword=&page=2"]'
+    NEXT_PAGE = '//a[@class="page-link"]'
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -38,4 +40,11 @@ class HomePage(BasePageApp):
             EC.visibility_of_element_located((By.XPATH, self.CHOOSE_ITEM)))
         self._choose_item = self._driver.find_element(By.XPATH, self.CHOOSE_ITEM)
         self._choose_item.click()
+
+    def click_on_next_page(self):
+        self._driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        WebDriverWait(self._driver, 20).until(
+            EC.presence_of_element_located((By.XPATH, self.NEXT_PAGE)))
+        self._next_page_button = self._driver.find_element(By.XPATH, self.NEXT_PAGE)
+        self._next_page_button.click()
 
