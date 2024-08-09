@@ -135,7 +135,7 @@ class MyTestCase(unittest.TestCase):
         This test verifies that the system does not allow sign-up when the password and re-entered password do not match.
         -----
         test case   #: 006
-        requirement #: 003
+        requirement #: 002
         """
         logging.info("---------- Initialize Test: password not matching re-entering password ----------")
         self.login_page.click_to_go_to_sign_up_button()
