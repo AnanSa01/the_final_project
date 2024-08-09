@@ -126,7 +126,7 @@ class MyTestCase(unittest.TestCase):
         self.sign_up_page.enter_and_re_enter_password_flow(Utilities.generate_random_string_just_numbers(8))
         self.sign_up_page.click_on_register_button()
         self.assertTrue(self.sign_up_page.check_if_still_on_register_page(), "Error! Should NOT connect")
-        logging.info("assertTrue if alert message is displayed")
+        logging.info("assertTrue if alert message is displayed".)
 
     def test_password_not_match_re_enter_password(self):
         """
