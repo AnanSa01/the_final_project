@@ -14,6 +14,11 @@ from final_project_of_them_all.logic.ui.search_page import SearchPage
 class MyTestCase(unittest.TestCase):
 
     def setUp(self):
+        """
+        Set up the test environment for UI testing.
+
+        Initializes the browser, loads configuration data, and performs login.
+        """
         self.browser = BrowserWrapper()
         self.config = LoadCon.return_config()
         self.driver = self.browser.get_driver(self.config["base_url_login"])
@@ -21,12 +26,34 @@ class MyTestCase(unittest.TestCase):
         self.login_page.login_flow(self.config["email_input"], self.config["password_input"])
         self.home_page = HomePage(self.driver)
 
+    def tearDown(self):
+        """
+        Clean up after each test by closing the browser.
+        """
+        self.driver.close()
+
     def test_make_purchase(self):
+        """
+        Test case for making a purchase on the website.
+
+        This test verifies that a user can:
+        - Search for an item
+        - Add it to the cart
+        - Proceed through checkout
+        - Enter shipping and billing information
+        - Complete the purchase and receive a confirmation message.
+        -----
+        test case   #: 022
+        requirement #: 009
+        """
+        # Search for the item and add it to the cart
         self.home_page.search_flow(self.config["make_purchase_item"])
         self.search_page = SearchPage(self.driver)
         self.search_page.click_on_first_result()
         self.product_page = ProductPage(self.driver)
         self.product_page.click_on_add_to_cart_button()
+
+        # Proceed to checkout and enter information
         self.cart_page = CartPage(self.driver)
         self.cart_page.click_on_proceed_to_checkout_button()
         self.checkout_page = CheckoutPage(self.driver)
@@ -46,6 +73,7 @@ class MyTestCase(unittest.TestCase):
                                         self.config["billing_zip_code"], self.config["billing_phone_number"],
                                         self.config["email_input"])
 
+        # Verify the purchase confirmation
         self.assertIn("Paid on", self.checkout_page.return_alert_message_in_purchase())
 
 

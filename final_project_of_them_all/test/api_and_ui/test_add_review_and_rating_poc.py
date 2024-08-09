@@ -14,10 +14,33 @@ from final_project_of_them_all.logic.utilities import LoadCon
 class MyTestCase(unittest.TestCase):
 
     def setUp(self):
+        """
+        Set up the test environment for API and UI testing.
+
+        Initializes APIWrapper for API requests and loads configuration data from a JSON file.
+        """
         self._api_request = APIWrapper()
         self.config = LoadCon.return_config()
 
-    def test_add_review_both(self):
+    def tearDown(self):
+        """
+        Clean up after each test.
+
+        Closes the browser and performs any necessary cleanup tasks.
+        """
+        self.driver.quit()
+
+    def test_add_review_api_and_ui_poc(self):
+        """
+        Proof-of-Concept (POC) Test Case for Adding and Verifying Reviews
+
+        This POC test case demonstrates adding a review through the API and then verifying
+        that the review appears correctly on the UI. It helps ensure that the end-to-end
+        functionality of adding a review and its visibility on the product page is working.
+        -----
+        test case   #: 018
+        requirement #: 005
+        """
         api_add_rating = AddRating(self._api_request)
         item_id = self.config["add_rating_item_param"]
         payload_for_poc = self.config["payload_for_poc"]

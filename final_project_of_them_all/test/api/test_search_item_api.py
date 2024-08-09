@@ -8,12 +8,22 @@ class MyTestCase(unittest.TestCase):
 
     def setUp(self):
         """
-        request to get API data using APIWrapper, and load json file.
+        Set up the test environment for API testing.
+
+        Initializes the APIWrapper to handle API requests and loads configuration data from a JSON file.
         """
         self._api_request = APIWrapper()
         self.config = UT.LoadCon.return_config()
 
     def test_search_for_item_api(self):
+        """
+        Test case for searching an item via API.
+
+        This test verifies that the API returns the correct product information when searching for a specific item.
+        -----
+        test case   #: 015
+        requirement #: 004
+        """
         api_search_for_item = SearchForItem(self._api_request)
         result_of_search_for_item = api_search_for_item.search_for_item_api()
         products = result_of_search_for_item.body["products"]
