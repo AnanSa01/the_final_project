@@ -21,7 +21,7 @@
   "shipping_city_input": "Hourfiesh",
   "shipping_postal_code_input":"25155",
   "shipping_country_input": "Israel",
-  "update_profile_information_payload": {"id": "8", "name": "aaa", "email": "aaafortesting@gmail.com" ,
+  "update_profile_information_payload": {"id": "8", "name": "aaa", "email": "aaafortesting@gmail.com",
                                          "password": "aaafortesting55555"},
   "update_profile_information_success_message": "Successfully Updated",
   "billing_fake_credit_card_name": "Mastercard",
