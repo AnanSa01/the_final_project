@@ -31,8 +31,8 @@ class MyTestCase(unittest.TestCase):
 
         This test verifies that a user can successfully log in with valid credentials through the API.
         -----
-        test case   #: 013
-        requirement #: 003
+        test case   #: 002
+        requirement #: 001
         """
         #logging.info("---------- Initialize Test: search employees (using GET) ----------")
         api_signing_in = SigningIn(self._api_request)
@@ -47,8 +47,8 @@ class MyTestCase(unittest.TestCase):
 
         This test ensures that the API returns an appropriate error message when attempting to log in with invalid credentials.
         -----
-        test case   #: 014
-        requirement #: 003
+        test case   #: 006
+        requirement #: 001
         """
         # logging.info("---------- Initialize Test: search employees (using GET) ----------")
         api_signing_in = SigningIn(self._api_request)

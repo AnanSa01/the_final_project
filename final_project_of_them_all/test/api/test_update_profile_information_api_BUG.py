@@ -35,8 +35,8 @@ class MyTestCase(unittest.TestCase):
 
         This test checks the behavior of the `update_profile_information` API endpoint.
         -----
-        test case   #: 025
-        requirement #: 014
+        test case   #: 016
+        requirement #: 006
         """
         # Initialize API wrapper and define payload
         api_update_profile_information = UpdateProfileInformation(self._api_request)

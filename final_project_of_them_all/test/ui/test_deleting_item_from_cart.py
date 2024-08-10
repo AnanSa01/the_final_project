@@ -38,8 +38,8 @@ class MyTestCase(unittest.TestCase):
         This test verifies that an item can be added to the cart and subsequently removed,
         and checks that the cart is empty after removal.
         -----
-        test case   #: 021
-        requirement #: 008
+        test case   #: 019
+        requirement #: 007
         """
         # Select an item and add it to the cart
         self.home_page.click_on_first_item()

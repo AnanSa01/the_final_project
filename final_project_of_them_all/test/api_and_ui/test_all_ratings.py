@@ -44,8 +44,8 @@ class MyTestCase(unittest.TestCase):
 
         The test ensures that all items have correct ratings by validating the list of results contains all True values.
         -----
-        test case   #: 024
-        requirement #: 012
+        test case   #: 013
+        requirement #: 004
         """
         # Get IDs of all items through the UI and rate five random items with ratings from 1 to 5
         self.all_ratings = AllRatings(self.driver)

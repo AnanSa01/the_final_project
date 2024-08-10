@@ -38,8 +38,8 @@ class MyTestCase(unittest.TestCase):
         that the review appears correctly on the UI. It helps ensure that the end-to-end
         functionality of adding a review and its visibility on the product page is working.
         -----
-        test case   #: 018
-        requirement #: 005
+        test case   #: 012
+        requirement #: 004
         """
         api_add_rating = AddRating(self._api_request)
         item_id = self.config["add_rating_item_param"]

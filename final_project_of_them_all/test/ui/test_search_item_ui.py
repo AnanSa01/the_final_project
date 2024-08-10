@@ -34,8 +34,8 @@ class MyTestCase(unittest.TestCase):
 
         This test verifies that the search function returns results matching the search query.
         -----
-        test case   #: 023
-        requirement #: 010
+        test case   #: 015
+        requirement #: 005
         """
         self.home_page.search_flow(self.config["search_for_item"])
         self.search_page = SearchPage(self.driver)

@@ -43,8 +43,8 @@ class MyTestCase(unittest.TestCase):
         - Enter shipping and billing information
         - Complete the purchase and receive a confirmation message.
         -----
-        test case   #: 022
-        requirement #: 009
+        test case   #: 020
+        requirement #: 007
         """
         # Search for the item and add it to the cart
         self.home_page.search_flow(self.config["make_purchase_item"])

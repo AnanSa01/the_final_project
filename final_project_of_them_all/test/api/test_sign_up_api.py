@@ -32,8 +32,8 @@ class MyTestCase(unittest.TestCase):
 
         This test verifies that a user can successfully sign up with valid credentials through the API.
         -----
-        test case   #: 016
-        requirement #: 003
+        test case   #: 003
+        requirement #: 001
         """
         #logging.info("---------- Initialize Test: search employees (using GET) ----------")
         api_signing_up = SigningUp(self._api_request)
@@ -51,8 +51,8 @@ class MyTestCase(unittest.TestCase):
 
         This test ensures that the API returns an appropriate error message when attempting to sign up with an already registered email.
         -----
-        test case   #: 017
-        requirement #: 004
+        test case   #: 008
+        requirement #: 003
         """
         api_signing_up = SigningUp(self._api_request)
         payload_of_invalid_sign_up = self.config["payload_for_login_api"]

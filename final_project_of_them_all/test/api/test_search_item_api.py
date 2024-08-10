@@ -21,8 +21,8 @@ class MyTestCase(unittest.TestCase):
 
         This test verifies that the API returns the correct product information when searching for a specific item.
         -----
-        test case   #: 015
-        requirement #: 004
+        test case   #: 014
+        requirement #: 005
         """
         api_search_for_item = SearchForItem(self._api_request)
         result_of_search_for_item = api_search_for_item.search_for_item_api()

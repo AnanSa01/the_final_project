@@ -41,8 +41,8 @@ class MyTestCase(unittest.TestCase):
         This test verifies that an item can be added to the cart with a specific quantity and that the
         quantity is correctly reflected during the checkout process.
         -----
-        test case   #: 019
-        requirement #: 006
+        test case   #: 018
+        requirement #: 007
         """
         # Select and add item to the cart
         self.home_page.click_on_first_item()

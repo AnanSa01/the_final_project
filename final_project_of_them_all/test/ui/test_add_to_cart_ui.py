@@ -10,7 +10,6 @@ from final_project_of_them_all.logic.ui.product_page import ProductPage
 from selenium.webdriver.support.ui import Select
 
 
-
 class MyTestCase(unittest.TestCase):
 
     def setUp(self):
@@ -42,8 +41,8 @@ class MyTestCase(unittest.TestCase):
         This test verifies that an item can be added to the cart and that the cart reflects this addition
         by checking if it is not empty.
         -----
-        test case   #: 020
-        requirement #: 006
+        test case   #: 017
+        requirement #: 007
         """
         # Select an item and add it to the cart
         self.home_page.click_on_first_item()
@@ -54,6 +53,7 @@ class MyTestCase(unittest.TestCase):
 
         # Check if the cart reflects the added item
         self.assertTrue(self.cart_page.return_true_if_cart_not_empty())
+
 
 if __name__ == '__main__':
     unittest.main()
