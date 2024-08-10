@@ -3,7 +3,7 @@ import unittest
 from final_project_of_them_all.infra.api.api_wrapper import APIWrapper
 from final_project_of_them_all.infra.config_provider import ConfigProvider
 from final_project_of_them_all.infra.ui.browser_wrapper import BrowserWrapper
-from final_project_of_them_all.logic.api.add_rating import AddRating
+from final_project_of_them_all.logic.api.add_review import AddRating
 from final_project_of_them_all.logic.ui.home_page import HomePage
 from final_project_of_them_all.logic.ui.login_page import LoginPage
 from final_project_of_them_all.logic.ui.product_page import ProductPage

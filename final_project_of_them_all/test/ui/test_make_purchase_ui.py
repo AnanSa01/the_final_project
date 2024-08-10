@@ -74,7 +74,7 @@ class MyTestCase(unittest.TestCase):
                                         self.config["email_input"])
 
         # Verify the purchase confirmation
-        self.assertIn("Paid on", self.checkout_page.return_alert_message_in_purchase())
+        self.assertIn(self.config["purchase_confirmation"], self.checkout_page.return_alert_message_in_purchase())
 
 
 if __name__ == '__main__':

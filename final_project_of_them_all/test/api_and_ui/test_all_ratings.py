@@ -1,7 +1,7 @@
 import unittest
 from final_project_of_them_all.infra.api.api_wrapper import APIWrapper
 from final_project_of_them_all.infra.ui.browser_wrapper import BrowserWrapper
-from final_project_of_them_all.logic.api.products import Products
+from final_project_of_them_all.logic.api.get_all_products import Products
 from final_project_of_them_all.logic.api_and_ui.test_all_ratings_api_and_ui import AllRatings
 from final_project_of_them_all.logic.ui.home_page import HomePage
 from final_project_of_them_all.logic.ui.login_page import LoginPage
@@ -38,11 +38,11 @@ class MyTestCase(unittest.TestCase):
         This test performs the following steps:
         1. Retrieves the IDs of all items from the UI.
         2. Sends API requests to rate five random items with ratings from 1 to 5.
-        3. Retrieves the list of products another API request.
-        4. Gathers detailed rating information for these items.
+        3. Sends another API requests for products to retrieve a list of all products' information.
+        4. Gathers all updated review information into a list, to include it with the product ID and name for each item.
         5. Checks if the ratings for each item match the expected results in the UI.
 
-        The test ensures that all items have correct ratings by validating if the list of results contains all True values.
+        The test ensures that all items have correct ratings by validating the list of results contains all True values.
         -----
         test case   #: 024
         requirement #: 012
