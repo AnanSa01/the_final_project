@@ -16,13 +16,7 @@ class LoadCon:
     def return_config():
         return ConfigProvider.load_from_file('C:\\Users\\Admin\\PycharmProjects\\the_final_project\\final_project_of_them_all\\config.json')
 
-    # @staticmethod
-    # def return_secret():
-    #     return ConfigProvider.load_from_file("../config.json")
-
-
-class Wait:
-
     @staticmethod
-    def web_driver_wait(driver, locator, timeout=10):
-        WebDriverWait(driver, timeout).until(EC.visibility_of_element_located((By.XPATH, locator)))
+    def return_secret():
+        return ConfigProvider.load_from_file("../../secret.json")
+

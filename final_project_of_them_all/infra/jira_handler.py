@@ -8,9 +8,9 @@ class JiraHandler:
 
     def __init__(self):
         self._jira_url = 'https://ansabek01.atlassian.net/'
-        config = LoadCon.return_config()
+        secret = LoadCon.return_secret()
         self._auth_jira = JIRA(
-            basic_auth=('an.sabek01@gmail.com', config["jira_token"]),
+            basic_auth=('an.sabek01@gmail.com', secret["jira_token"]),
             options={'server': self._jira_url}
         )
 

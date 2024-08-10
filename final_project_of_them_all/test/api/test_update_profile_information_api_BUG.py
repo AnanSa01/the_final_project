@@ -27,7 +27,8 @@ class MyTestCase(unittest.TestCase):
         """
         if self.fail:
             my_jira = JiraHandler()
-            my_jira.create_issue('TEST', 'all good', 'i found a bug in this test')
+            my_jira.create_issue('TEST', 'test_update_personal_information',
+                                 'i found a bug in this test')
 
     def test_search_for_item_api(self):
         """
