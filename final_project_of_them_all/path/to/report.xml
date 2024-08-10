@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="13" failures="0" skipped="0" tests="13" time="0.625" timestamp="2024-08-10T14:12:18.078175+03:00" hostname="Anan-Lenovo"><testcase classname="" name="logic.api_and_ui.test_all_ratings_api_and_ui" time="0.000"><error message="collection failure">ImportError while importing test module 'C:\Users\Admin\PycharmProjects\the_final_project\final_project_of_them_all\logic\api_and_ui\test_all_ratings_api_and_ui.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.1520.0_x64__qbz5n2kfra8p0\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+logic\api_and_ui\test_all_ratings_api_and_ui.py:4: in &lt;module&gt;
+    from final_project_of_them_all.infra.utilities import Utilities as IUT
+E   ModuleNotFoundError: No module named 'final_project_of_them_all'</error></testcase><testcase classname="" name="test.api.test_login_api" time="0.000"><error message="collection failure">ImportError while importing test module 'C:\Users\Admin\PycharmProjects\the_final_project\final_project_of_them_all\test\api\test_login_api.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.1520.0_x64__qbz5n2kfra8p0\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+test\api\test_login_api.py:3: in &lt;module&gt;
+    from final_project_of_them_all.infra.api.api_wrapper import APIWrapper
+E   ModuleNotFoundError: No module named 'final_project_of_them_all'</error></testcase><testcase classname="" name="test.api.test_search_item_api" time="0.000"><error message="collection failure">ImportError while importing test module 'C:\Users\Admin\PycharmProjects\the_final_project\final_project_of_them_all\test\api\test_search_item_api.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.1520.0_x64__qbz5n2kfra8p0\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+test\api\test_search_item_api.py:2: in &lt;module&gt;
+    from final_project_of_them_all.infra.api.api_wrapper import APIWrapper
+E   ModuleNotFoundError: No module named 'final_project_of_them_all'</error></testcase><testcase classname="" name="test.api.test_sign_up_api" time="0.000"><error message="collection failure">ImportError while importing test module 'C:\Users\Admin\PycharmProjects\the_final_project\final_project_of_them_all\test\api\test_sign_up_api.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.1520.0_x64__qbz5n2kfra8p0\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+test\api\test_sign_up_api.py:3: in &lt;module&gt;
+    from final_project_of_them_all.infra.api.api_wrapper import APIWrapper
+E   ModuleNotFoundError: No module named 'final_project_of_them_all'</error></testcase><testcase classname="" name="test.api.test_update_profile_information_api_BUG" time="0.000"><error message="collection failure">ImportError while importing test module 'C:\Users\Admin\PycharmProjects\the_final_project\final_project_of_them_all\test\api\test_update_profile_information_api_BUG.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.1520.0_x64__qbz5n2kfra8p0\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+test\api\test_update_profile_information_api_BUG.py:5: in &lt;module&gt;
+    from final_project_of_them_all.infra.api.api_wrapper import APIWrapper
+E   ModuleNotFoundError: No module named 'final_project_of_them_all'</error></testcase><testcase classname="" name="test.api_and_ui.test_add_review_and_rating_poc" time="0.000"><error message="collection failure">ImportError while importing test module 'C:\Users\Admin\PycharmProjects\the_final_project\final_project_of_them_all\test\api_and_ui\test_add_review_and_rating_poc.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.1520.0_x64__qbz5n2kfra8p0\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+test\api_and_ui\test_add_review_and_rating_poc.py:3: in &lt;module&gt;
+    from final_project_of_them_all.infra.api.api_wrapper import APIWrapper
+E   ModuleNotFoundError: No module named 'final_project_of_them_all'</error></testcase><testcase classname="" name="test.api_and_ui.test_all_ratings" time="0.000"><error message="collection failure">ImportError while importing test module 'C:\Users\Admin\PycharmProjects\the_final_project\final_project_of_them_all\test\api_and_ui\test_all_ratings.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.1520.0_x64__qbz5n2kfra8p0\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+test\api_and_ui\test_all_ratings.py:2: in &lt;module&gt;
+    from final_project_of_them_all.infra.api.api_wrapper import APIWrapper
+E   ModuleNotFoundError: No module named 'final_project_of_them_all'</error></testcase><testcase classname="" name="test.ui.test_add_multiple_items_to_cart" time="0.000"><error message="collection failure">ImportError while importing test module 'C:\Users\Admin\PycharmProjects\the_final_project\final_project_of_them_all\test\ui\test_add_multiple_items_to_cart.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.1520.0_x64__qbz5n2kfra8p0\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+test\ui\test_add_multiple_items_to_cart.py:3: in &lt;module&gt;
+    from final_project_of_them_all.logic import utilities as UT
+E   ModuleNotFoundError: No module named 'final_project_of_them_all'</error></testcase><testcase classname="" name="test.ui.test_add_to_cart_ui" time="0.000"><error message="collection failure">ImportError while importing test module 'C:\Users\Admin\PycharmProjects\the_final_project\final_project_of_them_all\test\ui\test_add_to_cart_ui.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.1520.0_x64__qbz5n2kfra8p0\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+test\ui\test_add_to_cart_ui.py:3: in &lt;module&gt;
+    from final_project_of_them_all.logic import utilities as UT
+E   ModuleNotFoundError: No module named 'final_project_of_them_all'</error></testcase><testcase classname="" name="test.ui.test_deleting_item_from_cart" time="0.000"><error message="collection failure">ImportError while importing test module 'C:\Users\Admin\PycharmProjects\the_final_project\final_project_of_them_all\test\ui\test_deleting_item_from_cart.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.1520.0_x64__qbz5n2kfra8p0\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+test\ui\test_deleting_item_from_cart.py:3: in &lt;module&gt;
+    from final_project_of_them_all.infra.ui.browser_wrapper import BrowserWrapper
+E   ModuleNotFoundError: No module named 'final_project_of_them_all'</error></testcase><testcase classname="" name="test.ui.test_login_and_sign_up_ui" time="0.000"><error message="collection failure">ImportError while importing test module 'C:\Users\Admin\PycharmProjects\the_final_project\final_project_of_them_all\test\ui\test_login_and_sign_up_ui.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.1520.0_x64__qbz5n2kfra8p0\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+test\ui\test_login_and_sign_up_ui.py:4: in &lt;module&gt;
+    from final_project_of_them_all.infra.ui.browser_wrapper import BrowserWrapper
+E   ModuleNotFoundError: No module named 'final_project_of_them_all'</error></testcase><testcase classname="" name="test.ui.test_make_purchase_ui" time="0.000"><error message="collection failure">ImportError while importing test module 'C:\Users\Admin\PycharmProjects\the_final_project\final_project_of_them_all\test\ui\test_make_purchase_ui.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.1520.0_x64__qbz5n2kfra8p0\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+test\ui\test_make_purchase_ui.py:3: in &lt;module&gt;
+    from final_project_of_them_all.logic.utilities import LoadCon
+E   ModuleNotFoundError: No module named 'final_project_of_them_all'</error></testcase><testcase classname="" name="test.ui.test_search_item_ui" time="0.000"><error message="collection failure">ImportError while importing test module 'C:\Users\Admin\PycharmProjects\the_final_project\final_project_of_them_all\test\ui\test_search_item_ui.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.1520.0_x64__qbz5n2kfra8p0\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+test\ui\test_search_item_ui.py:3: in &lt;module&gt;
+    from final_project_of_them_all.infra.ui.browser_wrapper import BrowserWrapper
+E   ModuleNotFoundError: No module named 'final_project_of_them_all'</error></testcase></testsuite></testsuites>
