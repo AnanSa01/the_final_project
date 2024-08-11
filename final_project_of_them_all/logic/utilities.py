@@ -15,6 +15,7 @@ class LoadCon:
     @staticmethod
     def return_config():
         return ConfigProvider.load_from_file('C:\\Users\\Admin\\PycharmProjects\\the_final_project\\final_project_of_them_all\\config.json')
+        # copy your absolute path of your "config.json" and paste it in this function
 
     @staticmethod
     def return_secret():

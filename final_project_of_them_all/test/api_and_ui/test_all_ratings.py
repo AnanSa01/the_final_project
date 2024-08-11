@@ -49,9 +49,9 @@ class MyTestCase(unittest.TestCase):
         """
         # Get IDs of all items through the UI and rate five random items with ratings from 1 to 5
         self.all_ratings = AllRatings(self.driver)
+        all_details = self.all_ratings.give_to_five_items_rating(self._api_request)
 
         # Retrieve updated product data from API
-        all_details = self.all_ratings.give_to_five_items_rating(self._api_request)
         api_get_products = Products(self._api_request)
         result_of_products = api_get_products.get_products_api()
         products = result_of_products.body["products"]
