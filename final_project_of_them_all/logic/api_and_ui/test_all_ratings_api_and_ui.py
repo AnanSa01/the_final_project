@@ -45,14 +45,14 @@ class AllRatings(BasePageApp):
             # Prepare payload for API request
             payload = {"rating": rating, "comment": comment}
 
-            # Send API request to add rating
+            # Send API request to add rating with ID and payload we prepared from last line.
             api_rate_one = AddRating(request)
             api_rate_one.add_rating_api(item_id, payload)
 
             # Store details of the rated item in a list.
             # Name attribute is unavailable here. To include it,
             # an additional API request to the "Products" endpoint is required.
-            id_and_reviews = {"id": item_id, "rating": rating, "comment": comment, "index": item_index, "name": None}
+            id_and_reviews = {"id": item_id, "rating": rating, "comment": comment, "index": item_index, "name_item": None}
             all_details.append(id_and_reviews)
 
         return all_details

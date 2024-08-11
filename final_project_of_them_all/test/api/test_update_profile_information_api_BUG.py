@@ -1,12 +1,10 @@
 import logging
 import unittest
 
-from requests import JSONDecodeError
-
 from final_project_of_them_all.infra.api.api_wrapper import APIWrapper
 from final_project_of_them_all.infra.jira_handler import JiraHandler
-from final_project_of_them_all.logic import utilities as UT
 from final_project_of_them_all.logic.api.update_profile_information import UpdateProfileInformation
+from final_project_of_them_all.logic.utilities import LoadCon
 
 
 class MyTestCase(unittest.TestCase):
@@ -17,8 +15,8 @@ class MyTestCase(unittest.TestCase):
         Initializes the API wrapper and loads configuration data.
         """
         self._api_request = APIWrapper()
-        self.config = UT.LoadCon.return_config()
-        self.fail = True
+        self.config = LoadCon.return_config()
+        self.fail = False
 
     def tearDown(self):
         """
@@ -47,16 +45,15 @@ class MyTestCase(unittest.TestCase):
         # Initialize API wrapper and define payload
         api_update_profile_information = UpdateProfileInformation(self._api_request)
         payload = self.config["update_profile_information_payload"]
-
-        # Make the API request to update profile information
         result_update_profile_information = api_update_profile_information.update_profile_information_api(payload)
 
-        # Assert that the request was successful
-        self.assertTrue(result_update_profile_information.ok)
-        self.assertEqual(result_update_profile_information.status_code, self.config["success_response"])
-
-        # If assertions pass, set fail to False
-        self.fail = False
+        # Make the API request to update profile information
+        try:
+            self.assertTrue(result_update_profile_information.ok)
+            self.assertEqual(result_update_profile_information.status_code, self.config["success_response"])
+        except:
+            self.fail = True
+            raise AssertionError
 
 
 if __name__ == '__main__':
