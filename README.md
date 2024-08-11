@@ -1,116 +1,75 @@
-📑 Otaku House Automation Suite
+🏯 Otaku House Website API & UI Testing
 
-📌 Project Overview
-Welcome to the Otaku House Automation Suite! This project provides a comprehensive suite for automating the testing of Trello's UI and API functionalities. Leveraging industry-standard tools, this suite ensures that Trello's key features are both stable and performant.
+🌟 Project Overview
+Welcome to the Otaku House Website API and UI Testing Project! This suite ensures that the Otaku House eCommerce platform operates smoothly by validating both backend services and the user interface. Our goal is to guarantee a seamless and enjoyable shopping experience for all users.
 
-🔑 Features
-UI Automation: Automate and validate Otaku House user interface using Selenium WebDriver.
-API Testing: Perform in-depth testing of Otaku House's API endpoints with the Requests library.
-Integrated Reporting: Generate detailed test reports with the Allure framework.
-Jira Integration: Seamlessly manage and track test issues using Jira.
-🎯 Test Scope
-UI Tests: Ensure the core functionalities of Otaku House’s UI are working as expected.
-API Tests: Validate critical Trello API endpoints for accuracy and performance.
-Combined Tests: Demonstrate integration and interaction between UI and API tests.
-🛠 Setup Instructions
-Clone the Repository:
+🎯 Key Features
+API Testing: Validate backend services and ensure API endpoints are functioning as expected.
+UI Testing: Test the user interface for usability and compatibility across devices and browsers.
+Functional Testing: Verify core features like user registration, login, shopping cart, and checkout.
+🔧 Tools & Technologies
+Selenium: Automating UI testing for cross-browser compatibility.
+Postman: API testing and endpoint validation.
+Requests Library: For API testing within Python scripts.
+Pytest: Test framework for running and managing test cases.
+JIRA: Track issues and manage project workflows.
+Allure: Generate and visualize test reports.
 
+🚀 Quick Start
+
+1. Clone the Repository
 bash
 Copy code
 git clone https://github.com/AnanSa01/the_final_project
-Install Dependencies:
+cd OtakuHouse_Testing
 
+2. Set Up the Virtual Environment
+bash
+Copy code
+python -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+
+3. Install Dependencies
 bash
 Copy code
 pip install -r requirements.txt
-Configure Environment Variables:
 
+4. Run Tests
 bash
 Copy code
-cp .env.example .env
-Edit the .env file to include your Otaku House API key and token.
-
-▶ Running Tests
-UI Tests:
-
-bash
+python run_tests.py
+🎨 Design Highlights
+Responsive Design: Ensures readability and usability across all screen sizes.
+Custom Banners: Visual elements like the Otaku House banner add a personal touch.
+Clear Structure: Sections are organized for easy navigation and understanding.
+🛠 Project Structure
 Copy code
-pytest test/web
-API Tests:
-
-bash
-Copy code
-pytest api/tests
-Run All Tests with Allure Reporting:
-
-bash
-Copy code
-pytest --alluredir=./reports
-allure serve reports
-🛠 Tools and Technologies
-IDE: PyCharm 2024.1.1
-Automation Framework: Selenium 4.22.0
-Programming Language: Python 3.8+
-Browser: Google Chrome 126.0.6478.127
-API Testing: Requests library
-Test Framework: Pytest
-Reporting: Allure Framework
-Version Control: Git
-Bug Tracking: Jira
+OtakuHouse_Testing/
+├── backend/
+├── tests/
+│   ├── api/
+│   └── ui/
+├── reports/
+└── README.md
 📊 Allure Reporting
-To utilize Allure for test reporting:
-
-Install Allure Command-Line Tool:
-
+Install Allure
 bash
 Copy code
 npm install -g allure-commandline
-Generate and Serve the Allure Report:
-
+Run and Serve Reports
 bash
 Copy code
 pytest --alluredir=./reports
 allure serve reports
-🔗 API Reference
-This project integrates with Trello's official REST API. For detailed API documentation, visit the Trello REST API Documentation.
+👥 Contributing
+We welcome contributions! Here’s how you can get involved:
 
-Our test suite covers key API endpoints to ensure comprehensive validation of Trello's functionality.
+Fork the repository and create a new branch.
+Make your changes and commit them with a meaningful message.
+Push to the branch and submit a pull request.
+📬 Contact Information
+For now, placeholder info. Update it later!
 
-📘 Documentation
-Alongside the code, this project includes:
-
-Software Test Plan (STP): Detailed strategy and approach for testing.
-Test Cases Document: Comprehensive documentation of test cases in Word (STD file).
-Postman Collections: For API testing and validation.
-Detailed README: For project overview and setup instructions.
-🙏 Acknowledgements
-Special thanks to:
-
-Otaku House API
-Selenium
-Pytest
-Allure Framework
-Jira
-🤝 Contributing
-We welcome contributions to this project! To contribute:
-
-Fork the repository.
-Create a feature branch:
-bash
-Copy code
-git checkout -b feature/NewFeature
-Commit your changes:
-bash
-Copy code
-git commit -am 'Add NewFeature'
-Push to the branch:
-bash
-Copy code
-git push origin feature/NewFeature
-Submit a pull request.
-📞 Contact
-For any questions or suggestions, feel free to reach out:
-
-Name: Anan Sa
-Email:an.sabek01@gmail.com
-GitHub: AnanSa01
+Name: Anan Sabek
+Email: an.sabek01@gmail.com
+GitHub: https://github.com/AnanSa01/the_final_project
