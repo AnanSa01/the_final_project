@@ -27,7 +27,7 @@ class MyTestCase(unittest.TestCase):
         api_search_for_item = SearchForItem(self._api_request)
         result_of_search_for_item = api_search_for_item.search_for_item_api()
         products = result_of_search_for_item.body["products"]
-        self.assertEqual(result_of_search_for_item.status_code, 200)
+        self.assertEqual(result_of_search_for_item.status_code, self.config["success_response"])
         self.assertEqual(products[0]["name"], self.config["search_for_item"])
 
 

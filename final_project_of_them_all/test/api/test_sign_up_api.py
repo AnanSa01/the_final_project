@@ -42,8 +42,9 @@ class MyTestCase(unittest.TestCase):
         password = IUT.generate_random_string_just_numbers(8)
         payload_of_sign_up = {"name": name, "email": email, "password": password}
         result_of_sign_up = api_signing_up.signing_up_api(payload_of_sign_up)
-        self.assertEqual(result_of_sign_up.status_code, 200) # Check if the API response status code is 200
+        self.assertEqual(result_of_sign_up.status_code, self.config["success_response"]) # Check if the API response status code is 200
         self.assertEqual(result_of_sign_up.body["username"], email) # Verify that the returned username matches the provided email
+
 
     def test_negative_sign_up_with_already_signed_in_api(self):
         """
@@ -57,8 +58,9 @@ class MyTestCase(unittest.TestCase):
         api_signing_up = SigningUp(self._api_request)
         payload_of_invalid_sign_up = self.config["payload_for_login_api"]
         result_of_sign_up = api_signing_up.signing_up_api(payload_of_invalid_sign_up)
-        self.assertEqual(result_of_sign_up.status_code, 400)  # Check if the API response status code is 400
+        self.assertEqual(result_of_sign_up.status_code, self.config["response_not_found"])  # Check if the API response status code is 400
         self.assertEqual(result_of_sign_up.body["detail"], "User with this email is already registered")
+
 
 
 if __name__ == '__main__':

@@ -38,7 +38,7 @@ class MyTestCase(unittest.TestCase):
         api_signing_in = SigningIn(self._api_request)
         payload_of_login = self.config["payload_for_login_api"]
         result_of_login = api_signing_in.signing_in_api(payload_of_login)
-        self.assertEqual(result_of_login.status_code, 200)
+        self.assertEqual(result_of_login.status_code, self.config["success_response"])
         self.assertEqual(result_of_login.body["username"], self.config["email_input"])
 
     def test_invalid_login_api(self):
@@ -54,8 +54,9 @@ class MyTestCase(unittest.TestCase):
         api_signing_in = SigningIn(self._api_request)
         payload_of_login = self.config["payload_for_invalid_login_api"]
         result_of_login = api_signing_in.signing_in_api(payload_of_login)
-        self.assertEqual(result_of_login.status_code, 401)
+        self.assertEqual(result_of_login.status_code, self.config["response_not_active"])
         self.assertEqual(result_of_login.body["detail"], "No active account found with the given credentials")
+        print(result_of_login.body)
 
 
 if __name__ == '__main__':

@@ -4,12 +4,12 @@
 Welcome to the Otaku House Automation Suite! This project provides a comprehensive suite for automating the testing of Trello's UI and API functionalities. Leveraging industry-standard tools, this suite ensures that Trello's key features are both stable and performant.
 
 🔑 Features
-UI Automation: Automate and validate Trello's user interface using Selenium WebDriver.
-API Testing: Perform in-depth testing of Trello's API endpoints with the Requests library.
+UI Automation: Automate and validate Otaku House user interface using Selenium WebDriver.
+API Testing: Perform in-depth testing of Otaku House's API endpoints with the Requests library.
 Integrated Reporting: Generate detailed test reports with the Allure framework.
 Jira Integration: Seamlessly manage and track test issues using Jira.
 🎯 Test Scope
-UI Tests: Ensure the core functionalities of Trello’s UI are working as expected.
+UI Tests: Ensure the core functionalities of Otaku House’s UI are working as expected.
 API Tests: Validate critical Trello API endpoints for accuracy and performance.
 Combined Tests: Demonstrate integration and interaction between UI and API tests.
 🛠 Setup Instructions
@@ -17,8 +17,7 @@ Clone the Repository:
 
 bash
 Copy code
-git clone https://github.com/imad-Ra/Trello_Final_Project.git
-cd Trello_Final_Project
+git clone https://github.com/AnanSa01/the_final_project
 Install Dependencies:
 
 bash
@@ -29,7 +28,7 @@ Configure Environment Variables:
 bash
 Copy code
 cp .env.example .env
-Edit the .env file to include your Trello API key and token.
+Edit the .env file to include your Otaku House API key and token.
 
 ▶ Running Tests
 UI Tests:
@@ -87,7 +86,7 @@ Detailed README: For project overview and setup instructions.
 🙏 Acknowledgements
 Special thanks to:
 
-Trello API
+Otaku House API
 Selenium
 Pytest
 Allure Framework

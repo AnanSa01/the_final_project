@@ -34,6 +34,9 @@
   "billing_zip_code": 25155,
   "billing_phone_number": "0555555555",
   "purchase_confirmation": "Paid on",
-  "emails_to_generate": "@gmail.com"
+  "emails_to_generate": "@gmail.com",
+  "success_response": 200,
+  "response_not_found": 400,
+  "response_not_active": 401
 
 }
