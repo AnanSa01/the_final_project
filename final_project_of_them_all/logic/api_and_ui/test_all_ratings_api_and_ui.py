@@ -7,6 +7,7 @@ from final_project_of_them_all.logic.ui.base_page_app import BasePageApp
 from final_project_of_them_all.logic.ui.home_page import HomePage
 from final_project_of_them_all.logic.ui.product_page import ProductPage
 from final_project_of_them_all.logic.ui.search_page import SearchPage
+from final_project_of_them_all.logic.utilities import LoadCon
 
 
 class AllRatings(BasePageApp):
@@ -21,17 +22,18 @@ class AllRatings(BasePageApp):
         """
         # Find all item elements on the page
         self._all_items = self._driver.find_elements(By.XPATH, self.ITEM_TITLE)
+        self.config = LoadCon.return_config()
         already_selected_items = []
         all_details = []
 
         for i in range(5):
-            # Select a unique random item index
-            item = random.randint(1, len(self._all_items) - 1)
+            # Select only unique random items
+            item = random.randint(self.config["random_from"], len(self._all_items) - 1)
             while item in already_selected_items:
-                item = random.randint(1, len(self._all_items) - 1)
+                item = random.randint(self.config["random_from"], len(self._all_items) - 1)
             already_selected_items.append(item)
 
-            # Extract item ID from URL
+            # Extract item ID from UI
             attribute_value = self._all_items[item].get_attribute("href").split("/")
             item_id = attribute_value[5]
             item_index = item
@@ -47,8 +49,10 @@ class AllRatings(BasePageApp):
             api_rate_one = AddRating(request)
             api_rate_one.add_rating_api(item_id, payload)
 
-            # Store details of the rated item
-            id_and_reviews = [item_id, rating, comment, item_index]
+            # Store details of the rated item in a list.
+            # Name attribute is unavailable here. To include it,
+            # an additional API request to the "Products" endpoint is required.
+            id_and_reviews = {"id": item_id, "rating": rating, "comment": comment, "index": item_index, "name": None}
             all_details.append(id_and_reviews)
 
         return all_details
@@ -63,8 +67,8 @@ class AllRatings(BasePageApp):
         """
         for product in products:
             for i in range(5):
-                if int(product["_id"]) == int(all_details[i][0]):
-                    all_details[i].append(product["name"])
+                if int(product["_id"]) == int(all_details[i]["id"]):
+                    all_details[i]["name"] = product["name"]
 
         return all_details
 
@@ -80,13 +84,13 @@ class AllRatings(BasePageApp):
 
         for i in range(5):
             # Search for the product and check if the review text matches
-            self.search_flow(all_details_updated[i][4])
+            self.search_flow(all_details_updated[i]["name"])
             self.search_page = SearchPage(driver)
             self.search_page.click_on_first_result()
             self.product_page = ProductPage(driver)
 
-            # Verify if the comment appears in the product page reviews and add the result to the list.
-            list_check_true.append(all_details_updated[i][2] in self.product_page.return_review_text())
+            # Check if each comment from API request IS IN the comment section from UI, and append TRUE/FALSE to list.
+            list_check_true.append(all_details_updated[i]["comment"] in self.product_page.return_review_text())
 
             # Refresh the page to clear the search bar for entering a new search term.
             self.refresh_page()

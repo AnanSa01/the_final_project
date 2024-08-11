@@ -51,11 +51,11 @@ class MyTestCase(unittest.TestCase):
         """
         logging.info("Initialize Test: verify different ratings for multiple items. with API & UI - POC")
 
-        # Get IDs of all items through the UI and rate five random items with ratings from 1 to 5
+        # Get IDs of all items through UI, and rate five random items with ratings from 1 to 5 with API.
         self.all_ratings = AllRatings(self.driver)
         all_details = self.all_ratings.give_to_five_items_rating(self._api_request)
 
-        # Retrieve updated product data from API
+        # Retrieve updated product data from another API request with reviews details.
         api_get_products = Products(self._api_request)
         result_of_products = api_get_products.get_products_api()
         products = result_of_products.body["products"]
