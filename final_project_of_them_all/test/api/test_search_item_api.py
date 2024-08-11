@@ -1,3 +1,4 @@
+import logging
 import unittest
 from final_project_of_them_all.infra.api.api_wrapper import APIWrapper
 from final_project_of_them_all.logic import utilities as UT
@@ -15,6 +16,14 @@ class MyTestCase(unittest.TestCase):
         self._api_request = APIWrapper()
         self.config = UT.LoadCon.return_config()
 
+    def tearDown(self):
+        """
+        Clean up after each test.
+
+        Placeholder for any cleanup tasks after tests. Currently, no operations are defined.
+        """
+        logging.info(f'End of test.\n')
+
     def test_search_for_item_api(self):
         """
         Test case for searching an item via API.
@@ -24,6 +33,7 @@ class MyTestCase(unittest.TestCase):
         test case   #: 014
         requirement #: 005
         """
+        logging.info("Initialize Test: search for item with API")
         api_search_for_item = SearchForItem(self._api_request)
         result_of_search_for_item = api_search_for_item.search_for_item_api()
         products = result_of_search_for_item.body["products"]

@@ -1,3 +1,5 @@
+import logging
+
 from selenium.common.exceptions import *
 from selenium.webdriver.common.by import By
 
@@ -19,8 +21,9 @@ class LoginPage(BasePageApp):
             self._password_input = self._driver.find_element(By.XPATH, self.PASSWORD_INPUT)
             self._sign_in_button = self._driver.find_element(By.XPATH, self.SIGN_IN_BUTTON)
             self._go_to_sign_up_button = self._driver.find_element(By.XPATH, self.GO_TO_SIGN_UP_BUTTON)
+
         except NoSuchElementException:
-            print("error")
+            logging.info("Error in initializing HomePage")
 
     def write_in_email_input_field(self, email):
         self._email_input.send_keys(email)

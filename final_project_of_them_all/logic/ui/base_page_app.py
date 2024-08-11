@@ -1,3 +1,5 @@
+import logging
+
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import *
 from selenium.webdriver.support.wait import WebDriverWait
@@ -23,7 +25,7 @@ class BasePageApp(BasePage):
             self._logo_button = self._driver.find_element(By.XPATH, self.LOGO_BUTTON)
 
         except NoSuchElementException:
-            print("error")
+            logging.info("Error in initializing BasePageApp")
 
     def click_on_login_button_in_header(self):
         self._login_button.click()

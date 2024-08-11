@@ -1,3 +1,4 @@
+import logging
 import unittest
 
 from final_project_of_them_all.infra.api.api_wrapper import APIWrapper
@@ -28,6 +29,7 @@ class MyTestCase(unittest.TestCase):
 
         Closes the browser and performs any necessary cleanup tasks.
         """
+        logging.info(f'End of test.\n')
         self.driver.quit()
 
     def test_add_review_api_and_ui_poc(self):
@@ -41,12 +43,15 @@ class MyTestCase(unittest.TestCase):
         test case   #: 012
         requirement #: 004
         """
+        logging.info("Initialize Test: search for add review with API & UI - POC")
+
+        # API Request
         api_add_rating = AddRating(self._api_request)
         item_id = self.config["add_rating_item_param"]
         payload_for_poc = self.config["payload_for_poc"]
-        result_of_add_rating_api = api_add_rating.add_rating_api(item_id, payload_for_poc)
-        print(result_of_add_rating_api.body)
+        api_add_rating.add_rating_api(item_id, payload_for_poc)
 
+        # UI Validation
         self.browser = BrowserWrapper()
         self.driver = self.browser.get_driver(self.browser.config["base_url_login"])
         self.login_page = LoginPage(self.driver)

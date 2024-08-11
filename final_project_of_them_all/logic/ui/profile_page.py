@@ -1,5 +1,7 @@
-from selenium.webdriver.common.by import By
+import logging
 
+from selenium.webdriver.common.by import By
+from selenium.common.exceptions import *
 from final_project_of_them_all.logic.ui.base_page_app import BasePageApp
 
 
@@ -13,12 +15,16 @@ class ProfilePage(BasePageApp):
     TITLE_TEXT = '//div[contains(text(), "Successfully Updated")]'
 
     def __init__(self, driver):
-        super().__init__(driver)
-        self._name_input = self._driver.find_element(By.XPATH, self.NAME_INPUT)
-        self._email_input = self._driver.find_element(By.XPATH, self.EMAIL_INPUT)
-        self._password_input = self._driver.find_element(By.XPATH, self.PASSWORD_INPUT)
-        self._re_password_input = self._driver.find_element(By.XPATH, self.RE_PASSWORD_INPUT)
-        self._update_button = self._driver.find_element(By.XPATH, self.UPDATE_BUTTON)
+        try:
+            super().__init__(driver)
+            self._name_input = self._driver.find_element(By.XPATH, self.NAME_INPUT)
+            self._email_input = self._driver.find_element(By.XPATH, self.EMAIL_INPUT)
+            self._password_input = self._driver.find_element(By.XPATH, self.PASSWORD_INPUT)
+            self._re_password_input = self._driver.find_element(By.XPATH, self.RE_PASSWORD_INPUT)
+            self._update_button = self._driver.find_element(By.XPATH, self.UPDATE_BUTTON)
+
+        except NoSuchElementException:
+            logging.info("Error in initializing ProfilePage")
 
     def write_in_name_input(self, name):
         self._name_input.send_keys(name)

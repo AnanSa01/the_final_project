@@ -34,7 +34,6 @@ class MyTestCase(unittest.TestCase):
         self.browser = BrowserWrapper()
         self.config = UT.LoadCon.return_config()
         self.driver = self.browser.get_driver(self.config["base_url_login"])
-        logging.info(f'UI Test. Opening a {self.browser.config["browser"]} web driver.')
         self.login_page = LoginPage(self.driver)
 
     def tearDown(self):
@@ -44,7 +43,7 @@ class MyTestCase(unittest.TestCase):
         Closes the browser and logs the completion of the test.
         """
         self.driver.close()
-        logging.info(f'End of test. {self.browser.config["browser"]} web driver is closed.\n')
+        logging.info(f'End of test. {self.config["browser"]} web driver is closed.\n')
 
     def test_valid_login(self):
         """
@@ -55,7 +54,7 @@ class MyTestCase(unittest.TestCase):
         test case   #: 001
         requirement #: 001
         """
-        logging.info("Initialize Test: valid login")
+        logging.info("Initialize Test: valid login with UI")
 
         # ACT
         self.login_page.write_in_email_input_field(self.config["email_input"])
@@ -76,7 +75,7 @@ class MyTestCase(unittest.TestCase):
         test case   #: 004
         requirement #: 002
         """
-        logging.info("Initialize Test: not adding password in login")
+        logging.info("Initialize Test: not adding password in login with UI")
 
         # ACT
         self.login_page.write_in_email_input_field(self.config["email_input"])
@@ -95,7 +94,7 @@ class MyTestCase(unittest.TestCase):
         test case   #: 005
         requirement #: 002
         """
-        logging.info("Initialize Test: not adding password nor email in login")
+        logging.info("Initialize Test: not adding password nor email in login with UI")
 
         # ACT
         self.login_page.click_on_sign_in_button()
@@ -113,7 +112,7 @@ class MyTestCase(unittest.TestCase):
         test case   #: 007
         requirement #: 003
         """
-        logging.info("Initialize Test: signing up with already connected user")
+        logging.info("Initialize Test: signing up with already connected user with UI")
 
         # ACT
         self.login_page.click_to_go_to_sign_up_button()
@@ -136,7 +135,7 @@ class MyTestCase(unittest.TestCase):
         test case   #: 009
         requirement #: 003
         """
-        logging.info("Initialize Test: invalid email sign-up")
+        logging.info("Initialize Test: invalid email sign-up with UI")
 
         # ACT
         self.login_page.click_to_go_to_sign_up_button()
@@ -159,7 +158,7 @@ class MyTestCase(unittest.TestCase):
         test case   #: 010
         requirement #: 003
         """
-        logging.info("Initialize Test: password not matching re-entering password")
+        logging.info("Initialize Test: password not matching re-entering password with UI")
 
         # ACT
         self.login_page.click_to_go_to_sign_up_button()
@@ -183,7 +182,7 @@ class MyTestCase(unittest.TestCase):
         test case   #: 011
         requirement #: 003
         """
-        logging.info("Initialize Test: password too short (at least 6 characters)")
+        logging.info("Initialize Test: password too short (at least 6 characters) with UI")
 
         # ACT
         self.login_page.click_to_go_to_sign_up_button()

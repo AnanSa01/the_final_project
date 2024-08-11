@@ -1,4 +1,4 @@
-
+import logging
 import unittest
 from final_project_of_them_all.infra.ui.browser_wrapper import BrowserWrapper
 from final_project_of_them_all.logic.ui.cart_page import CartPage
@@ -30,8 +30,9 @@ class MyTestCase(unittest.TestCase):
         Closes the browser.
         """
         self.driver.close()
+        logging.info(f'End of test. {self.config["browser"]} web driver is closed.\n')
 
-    def test_add_to_cart(self):
+    def test_remove_from_cart(self):
         """
         Test case for adding an item to the cart and then removing it.
 
@@ -41,6 +42,8 @@ class MyTestCase(unittest.TestCase):
         test case   #: 019
         requirement #: 007
         """
+        logging.info("Initialize Test: remove item from cart with UI")
+
         # Select an item and add it to the cart
         self.home_page.click_on_first_item()
         self.product_page = ProductPage(self.driver)

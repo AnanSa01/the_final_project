@@ -1,3 +1,4 @@
+import logging
 import time
 import unittest
 from final_project_of_them_all.logic.utilities import LoadCon
@@ -31,6 +32,7 @@ class MyTestCase(unittest.TestCase):
         Clean up after each test by closing the browser.
         """
         self.driver.close()
+        logging.info(f'End of test. {self.config["browser"]} web driver is closed.\n')
 
     def test_make_purchase(self):
         """
@@ -46,6 +48,8 @@ class MyTestCase(unittest.TestCase):
         test case   #: 020
         requirement #: 007
         """
+        logging.info("Initialize Test: test purchase flow with UI")
+
         # Search for the item and add it to the cart
         self.home_page.search_flow(self.config["make_purchase_item"])
         self.search_page = SearchPage(self.driver)

@@ -1,6 +1,7 @@
+import logging
 import time
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.action_chains import ActionChains
+from selenium.common.exceptions import *
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support.ui import Select
@@ -39,12 +40,16 @@ class CheckoutPage(BasePageApp):
         """
         Initialize the CheckoutPage object with the given WebDriver instance.
         """
-        super().__init__(driver)
-        self._address_input = self._driver.find_element(By.XPATH, self.ADDRESS_INPUT)
-        self._city_input = self._driver.find_element(By.XPATH, self.CITY_INPUT)
-        self._postal_code_input = self._driver.find_element(By.XPATH, self.POSTAL_CODE_INPUT)
-        self._country_input = self._driver.find_element(By.XPATH, self.COUNTRY_INPUT)
-        self._continue_button = self._driver.find_element(By.XPATH, self.CONTINUE_BUTTON)
+        try:
+            super().__init__(driver)
+            self._address_input = self._driver.find_element(By.XPATH, self.ADDRESS_INPUT)
+            self._city_input = self._driver.find_element(By.XPATH, self.CITY_INPUT)
+            self._postal_code_input = self._driver.find_element(By.XPATH, self.POSTAL_CODE_INPUT)
+            self._country_input = self._driver.find_element(By.XPATH, self.COUNTRY_INPUT)
+            self._continue_button = self._driver.find_element(By.XPATH, self.CONTINUE_BUTTON)
+
+        except NoSuchElementException:
+            logging.info("Error in initializing CheckoutPage")
 
     def write_in_address_input(self, address):
         """

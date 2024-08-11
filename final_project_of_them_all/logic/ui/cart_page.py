@@ -1,3 +1,6 @@
+import logging
+
+from selenium.common.exceptions import *
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -12,11 +15,14 @@ class CartPage(BasePageApp):
     EMPTY_CART_ALERT = '//div[contains(text(), "Your cart is empty.")]'
 
     def __init__(self, driver):
-        super().__init__(driver)
-        self._item_in_cart = self._driver.find_element(By.XPATH, self.ITEMS_IN_CART)
-        self._remove_from_cart_button = self._driver.find_element(By.XPATH, self.REMOVE_FROM_CART_BUTTON)
-        self._proceed_to_checkout_button = self._driver.find_element(By.XPATH, self.CHECKOUT_BUTTON)
-        # self._quantity_button = self._driver.find_element(By.XPATH, self.QUANTITY_BUTTON)
+        try:
+            super().__init__(driver)
+            self._item_in_cart = self._driver.find_element(By.XPATH, self.ITEMS_IN_CART)
+            self._remove_from_cart_button = self._driver.find_element(By.XPATH, self.REMOVE_FROM_CART_BUTTON)
+            self._proceed_to_checkout_button = self._driver.find_element(By.XPATH, self.CHECKOUT_BUTTON)
+
+        except NoSuchElementException:
+            logging.info("Error in initializing CartPage")
 
 
     def return_true_if_cart_not_empty(self):

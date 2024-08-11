@@ -1,3 +1,4 @@
+import logging
 import unittest
 
 from final_project_of_them_all.infra.api.api_wrapper import APIWrapper
@@ -22,8 +23,7 @@ class MyTestCase(unittest.TestCase):
 
         Placeholder for any cleanup tasks after tests. Currently, no operations are defined.
         """
-        # logging.info(f'End of test.\n')
-        ...
+        logging.info(f'End of test.\n')
 
     def test_valid_login_api(self):
         """
@@ -34,7 +34,7 @@ class MyTestCase(unittest.TestCase):
         test case   #: 002
         requirement #: 001
         """
-        #logging.info("---------- Initialize Test: search employees (using GET) ----------")
+        logging.info("Initialize Test: valid login with API")
         api_signing_in = SigningIn(self._api_request)
         payload_of_login = self.config["payload_for_login_api"]
         result_of_login = api_signing_in.signing_in_api(payload_of_login)
@@ -50,13 +50,12 @@ class MyTestCase(unittest.TestCase):
         test case   #: 006
         requirement #: 001
         """
-        # logging.info("---------- Initialize Test: search employees (using GET) ----------")
+        logging.info("Initialize Test: invalid login with API")
         api_signing_in = SigningIn(self._api_request)
         payload_of_login = self.config["payload_for_invalid_login_api"]
         result_of_login = api_signing_in.signing_in_api(payload_of_login)
         self.assertEqual(result_of_login.status_code, self.config["response_not_active"])
         self.assertEqual(result_of_login.body["detail"], "No active account found with the given credentials")
-        print(result_of_login.body)
 
 
 if __name__ == '__main__':

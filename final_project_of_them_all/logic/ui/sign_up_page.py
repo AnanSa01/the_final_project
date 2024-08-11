@@ -1,7 +1,9 @@
+import logging
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+from selenium.common.exceptions import *
 from final_project_of_them_all.logic.ui.base_page_app import BasePageApp
 
 
@@ -15,12 +17,15 @@ class SignUpPage(BasePageApp):
     REGISTER_TITLE = '//h1[contains(text(), "Register")]'
 
     def __init__(self, driver):
-        super().__init__(driver)
-        self._name_input = self._driver.find_element(By.XPATH, self.ENTER_NAME_INPUT)
-        self._email_input = self._driver.find_element(By.XPATH, self.ENTER_EMAIL_INPUT)
-        self._password_input = self._driver.find_element(By.XPATH, self.ENTER_PASSWORD_INPUT)
-        self._re_password_input = self._driver.find_element(By.XPATH, self.RE_ENTER_PASSWORD_INPUT)
+        try:
+            super().__init__(driver)
+            self._name_input = self._driver.find_element(By.XPATH, self.ENTER_NAME_INPUT)
+            self._email_input = self._driver.find_element(By.XPATH, self.ENTER_EMAIL_INPUT)
+            self._password_input = self._driver.find_element(By.XPATH, self.ENTER_PASSWORD_INPUT)
+            self._re_password_input = self._driver.find_element(By.XPATH, self.RE_ENTER_PASSWORD_INPUT)
 
+        except NoSuchElementException:
+            logging.info("Error in initializing SignUpPage")
 
     def enter_name_function(self, name_input):
         self._name_input.send_keys(name_input)
@@ -53,5 +58,3 @@ class SignUpPage(BasePageApp):
     def check_if_still_on_register_page(self):
         self._register_title = self._driver.find_element(By.XPATH, self.REGISTER_TITLE)
         return self._register_title.is_displayed()
-
-

@@ -1,3 +1,4 @@
+import logging
 import unittest
 
 from requests import JSONDecodeError
@@ -28,7 +29,9 @@ class MyTestCase(unittest.TestCase):
         if self.fail:
             my_jira = JiraHandler()
             my_jira.create_issue('TEST', 'test_update_personal_information',
-                                 'i found a bug in this test')
+                                 'I found a bug in this test')
+
+        logging.info(f'End of test.\n')
 
     def test_search_for_item_api(self):
         """
@@ -39,6 +42,8 @@ class MyTestCase(unittest.TestCase):
         test case   #: 016
         requirement #: 006
         """
+        logging.info("Initialize Test: search for item with API")
+
         # Initialize API wrapper and define payload
         api_update_profile_information = UpdateProfileInformation(self._api_request)
         payload = self.config["update_profile_information_payload"]
@@ -48,7 +53,7 @@ class MyTestCase(unittest.TestCase):
 
         # Assert that the request was successful
         self.assertTrue(result_update_profile_information.ok)
-        self.assertEqual(result_update_profile_information.status_code, 200)
+        self.assertEqual(result_update_profile_information.status_code, self.config["success_response"])
 
         # If assertions pass, set fail to False
         self.fail = False

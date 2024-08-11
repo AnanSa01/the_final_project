@@ -1,3 +1,4 @@
+import logging
 import random
 import unittest
 from final_project_of_them_all.logic import utilities as UT
@@ -8,7 +9,6 @@ from final_project_of_them_all.logic.ui.home_page import HomePage
 from final_project_of_them_all.logic.ui.login_page import LoginPage
 from final_project_of_them_all.logic.ui.product_page import ProductPage
 from selenium.webdriver.support.ui import Select
-
 
 
 class MyTestCase(unittest.TestCase):
@@ -33,6 +33,7 @@ class MyTestCase(unittest.TestCase):
         Closes the browser and performs any necessary cleanup tasks.
         """
         self.driver.close()
+        logging.info(f'End of test. {self.config["browser"]} web driver is closed.\n')
 
     def test_add_item_in_quantity_to_cart(self):
         """
@@ -44,10 +45,12 @@ class MyTestCase(unittest.TestCase):
         test case   #: 018
         requirement #: 007
         """
+        logging.info("Initialize Test: add item to cart in quantity with UI")
+
         # Select and add item to the cart
         self.home_page.click_on_first_item()
         self.product_page = ProductPage(self.driver)
-        quantity_input = random.randint(1, 10) # Random quantity between 1 and 10
+        quantity_input = random.randint(self.config["random_from"], self.config["random_to"])  # Random quantity number
         self.product_page.click_add_to_cart_in_quantity_flow(quantity_input)
         self.product_page.click_on_add_to_cart_button()
 

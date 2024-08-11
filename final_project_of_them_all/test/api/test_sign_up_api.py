@@ -1,3 +1,4 @@
+import logging
 import unittest
 
 from final_project_of_them_all.infra.api.api_wrapper import APIWrapper
@@ -23,8 +24,7 @@ class MyTestCase(unittest.TestCase):
 
         Placeholder for any necessary cleanup tasks after tests. Currently, no operations are defined.
         """
-        # logging.info(f'End of test.\n')
-        ...
+        logging.info(f'End of test.\n')
 
     def test_valid_sign_up_api(self):
         """
@@ -35,16 +35,15 @@ class MyTestCase(unittest.TestCase):
         test case   #: 003
         requirement #: 001
         """
-        #logging.info("---------- Initialize Test: search employees (using GET) ----------")
+        logging.info("Initialize Test: valid sign up with API")
         api_signing_up = SigningUp(self._api_request)
         name = IUT.generate_random_string_just_text(8)
         email = IUT.generate_random_string_text_with_numbers(8) + self.config["emails_to_generate"]
         password = IUT.generate_random_string_just_numbers(8)
         payload_of_sign_up = {"name": name, "email": email, "password": password}
         result_of_sign_up = api_signing_up.signing_up_api(payload_of_sign_up)
-        self.assertEqual(result_of_sign_up.status_code, self.config["success_response"]) # Check if the API response status code is 200
-        self.assertEqual(result_of_sign_up.body["username"], email) # Verify that the returned username matches the provided email
-
+        self.assertEqual(result_of_sign_up.status_code, self.config["success_response"])
+        self.assertEqual(result_of_sign_up.body["username"], email)
 
     def test_negative_sign_up_with_already_signed_in_api(self):
         """
@@ -55,11 +54,13 @@ class MyTestCase(unittest.TestCase):
         test case   #: 008
         requirement #: 003
         """
+        logging.info("Initialize Test: invalid sign up with API")
         api_signing_up = SigningUp(self._api_request)
         payload_of_invalid_sign_up = self.config["payload_for_login_api"]
         result_of_sign_up = api_signing_up.signing_up_api(payload_of_invalid_sign_up)
-        self.assertEqual(result_of_sign_up.status_code, self.config["response_not_found"])  # Check if the API response status code is 400
-        self.assertEqual(result_of_sign_up.body["detail"], "User with this email is already registered")
+        self.assertEqual(result_of_sign_up.status_code,
+                         self.config["response_not_found"])  # Check if the API response status code is 400
+        self.assertEqual(result_of_sign_up.body["detail"], self.config["message_invalid_sign_up"])
 
 
 

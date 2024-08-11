@@ -15,10 +15,7 @@ class ProductPage(BasePageApp):
 
     def __init__(self, driver):
         super().__init__(driver)
-        try:
-            ...
-        except NoSuchElementException:
-            print("error")
+
 
     def click_on_add_to_cart_button(self):
         WebDriverWait(self._driver, 10).until(

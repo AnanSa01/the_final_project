@@ -1,3 +1,4 @@
+import logging
 import random
 import unittest
 from final_project_of_them_all.logic import utilities as UT
@@ -33,6 +34,7 @@ class MyTestCase(unittest.TestCase):
         """
         self.cart_page.remove_item_from_cart()
         self.driver.close()
+        logging.info(f'End of test. {self.config["browser"]} web driver is closed.\n')
 
     def test_add_to_cart(self):
         """
@@ -44,6 +46,8 @@ class MyTestCase(unittest.TestCase):
         test case   #: 017
         requirement #: 007
         """
+        logging.info("Initialize Test: add item to cart with UI")
+
         # Select an item and add it to the cart
         self.home_page.click_on_first_item()
         self.product_page = ProductPage(self.driver)

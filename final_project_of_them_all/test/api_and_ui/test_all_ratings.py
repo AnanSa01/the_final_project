@@ -1,3 +1,4 @@
+import logging
 import unittest
 from final_project_of_them_all.infra.api.api_wrapper import APIWrapper
 from final_project_of_them_all.infra.ui.browser_wrapper import BrowserWrapper
@@ -29,6 +30,7 @@ class MyTestCase(unittest.TestCase):
 
         Closes the browser after test execution.
         """
+        logging.info(f'End of test.\n')
         self.driver.close()
 
     def test_all_ratings(self):
@@ -47,6 +49,8 @@ class MyTestCase(unittest.TestCase):
         test case   #: 013
         requirement #: 004
         """
+        logging.info("Initialize Test: verify different ratings for multiple items. with API & UI - POC")
+
         # Get IDs of all items through the UI and rate five random items with ratings from 1 to 5
         self.all_ratings = AllRatings(self.driver)
         all_details = self.all_ratings.give_to_five_items_rating(self._api_request)

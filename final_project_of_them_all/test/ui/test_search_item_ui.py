@@ -1,3 +1,4 @@
+import logging
 import unittest
 
 from final_project_of_them_all.infra.ui.browser_wrapper import BrowserWrapper
@@ -27,6 +28,7 @@ class MyTestCase(unittest.TestCase):
         Clean up after each test by closing the browser.
         """
         self.driver.close()
+        logging.info(f'End of test. {self.config["browser"]} web driver is closed.\n')
 
     def test_search_function(self):
         """
@@ -37,10 +39,11 @@ class MyTestCase(unittest.TestCase):
         test case   #: 015
         requirement #: 005
         """
+        logging.info("Initialize Test: test search function with UI")
+
         self.home_page.search_flow(self.config["search_for_item"])
         self.search_page = SearchPage(self.driver)
         self.assertEqual(self.search_page.return_result_titles(), self.config["search_for_item"])
-
 
 
 if __name__ == '__main__':
