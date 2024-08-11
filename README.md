@@ -21,7 +21,7 @@ Allure: Generate and visualize test reports.
 bash
 Copy code
 git clone https://github.com/AnanSa01/the_final_project
-cd OtakuHouse_Testing
+cd the_final_project
 
 2. Set Up the Virtual Environment
 bash
@@ -44,13 +44,14 @@ Custom Banners: Visual elements like the Otaku House banner add a personal touch
 Clear Structure: Sections are organized for easy navigation and understanding.
 🛠 Project Structure
 Copy code
-OtakuHouse_Testing/
+the_final_project/
 ├── backend/
 ├── tests/
 │   ├── api/
 │   └── ui/
 ├── reports/
 └── README.md
+5. 
 📊 Allure Reporting
 Install Allure
 bash
@@ -61,12 +62,14 @@ bash
 Copy code
 pytest --alluredir=./reports
 allure serve reports
+
 👥 Contributing
 We welcome contributions! Here’s how you can get involved:
 
 Fork the repository and create a new branch.
 Make your changes and commit them with a meaningful message.
 Push to the branch and submit a pull request.
+
 📬 Contact Information
 For now, placeholder info. Update it later!
 

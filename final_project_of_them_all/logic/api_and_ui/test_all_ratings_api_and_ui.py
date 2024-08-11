@@ -26,7 +26,7 @@ class AllRatings(BasePageApp):
         already_selected_items = []
         all_details = []
 
-        for i in range(5):
+        for i in range(self.config["in_range"]):
             # Select only unique random items
             item = random.randint(self.config["random_from"], len(self._all_items) - 1)
             while item in already_selected_items:
@@ -35,7 +35,7 @@ class AllRatings(BasePageApp):
 
             # Extract item ID from UI
             attribute_value = self._all_items[item].get_attribute("href").split("/")
-            item_id = attribute_value[5]
+            item_id = attribute_value[self.config["id_split"]]
             item_index = item
 
             # Generate rating and comment
@@ -52,7 +52,8 @@ class AllRatings(BasePageApp):
             # Store details of the rated item in a list.
             # Name attribute is unavailable here. To include it,
             # an additional API request to the "Products" endpoint is required.
-            id_and_reviews = {"id": item_id, "rating": rating, "comment": comment, "index": item_index, "name_item": None}
+            id_and_reviews = {"id": item_id, "rating": rating, "comment": comment,
+                              "index": item_index, "name_item": None}
             all_details.append(id_and_reviews)
 
         return all_details
@@ -66,9 +67,9 @@ class AllRatings(BasePageApp):
         :return: Updated list of item details with product names.
         """
         for product in products:
-            for i in range(5):
+            for i in range(self.config["in_range"]):
                 if int(product["_id"]) == int(all_details[i]["id"]):
-                    all_details[i]["name"] = product["name"]
+                    all_details[i]["name_item"] = product["name"]
 
         return all_details
 
@@ -82,16 +83,15 @@ class AllRatings(BasePageApp):
         """
         list_check_true = []
 
-        for i in range(5):
+        for i in range(self.config["in_range"]):
             # Search for the product and check if the review text matches
-            self.search_flow(all_details_updated[i]["name"])
+            self.search_flow(all_details_updated[i]["name_item"])
             self.search_page = SearchPage(driver)
             self.search_page.click_on_first_result()
             self.product_page = ProductPage(driver)
 
             # Check if each comment from API request IS IN the comment section from UI, and append TRUE/FALSE to list.
             list_check_true.append(all_details_updated[i]["comment"] in self.product_page.return_review_text())
-
             # Refresh the page to clear the search bar for entering a new search term.
             self.refresh_page()
 

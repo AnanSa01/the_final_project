@@ -19,7 +19,7 @@ class CartPage(BasePageApp):
             super().__init__(driver)
             self._item_in_cart = self._driver.find_element(By.XPATH, self.ITEMS_IN_CART)
             self._remove_from_cart_button = self._driver.find_element(By.XPATH, self.REMOVE_FROM_CART_BUTTON)
-            self._proceed_to_checkout_button = self._driver.find_element(By.XPATH, self.CHECKOUT_BUTTON)
+            
 
         except NoSuchElementException:
             logging.info("Error in initializing CartPage")
@@ -38,9 +38,9 @@ class CartPage(BasePageApp):
         self._remove_from_cart_button.click()
 
     def click_on_proceed_to_checkout_button(self):
+        WebDriverWait(self._driver, 20).until(
+            EC.presence_of_element_located((By.XPATH, self.CHECKOUT_BUTTON)))
+        self._proceed_to_checkout_button = self._driver.find_element(By.XPATH, self.CHECKOUT_BUTTON)
         self._proceed_to_checkout_button.click()
 
-    # def return_quantity_of_item(self):
-    #     print(self._quantity_button.text)
-    #     return self._quantity_button.text
 

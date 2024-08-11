@@ -11,8 +11,8 @@
   "password_input": "aaafortesting123456789",
   "payload_for_login_api": {"username": "aaafortesting@gmail.com", "password": "aaafortesting123456789"},
   "payload_for_invalid_login_api": {"username": "aaafortesting@gmail.com", "password": "00000"},
-  "add_rating_item_param": 21,
-  "poc_product_search": "Attack On Titan - Eren Yeager Figure",
+  "add_rating_item_param": 13,
+  "poc_product_search": "Attack On Titan - Levi Ackerman Figure",
   "payload_for_poc": {"rating": "5", "comment": "this product is very nice!"},
   "search_for_item": "Fullmetal Alchemist - Group Vs. Pride Mug",
   "search_for_item_encoded": "Fullmetal%20Alchemist%20-%20Group%20Vs.%20Pride%20Mug&page=1",
@@ -39,6 +39,8 @@
   "response_not_active": 401,
   "message_invalid_sign_up": "User with this email is already registered",
   "random_from": 1,
-  "random_to": 10
+  "random_to": 10,
+  "in_range": 5,
+  "id_split": 5
 
 }

@@ -6,6 +6,7 @@ from final_project_of_them_all.logic.ui.home_page import HomePage
 from final_project_of_them_all.logic.ui.login_page import LoginPage
 from final_project_of_them_all.logic import utilities as UT
 from final_project_of_them_all.logic.ui.search_page import SearchPage
+from final_project_of_them_all.logic.utilities import LoadCon
 
 
 class MyTestCase(unittest.TestCase):
@@ -17,7 +18,7 @@ class MyTestCase(unittest.TestCase):
         Initializes the browser, loads configuration data, and performs login.
         """
         self.browser = BrowserWrapper()
-        self.config = UT.LoadCon.return_config()
+        self.config = LoadCon.return_config()
         self.driver = self.browser.get_driver(self.config["base_url_login"])
         self.login_page = LoginPage(self.driver)
         self.login_page.login_flow(self.config["email_input"], self.config["password_input"])

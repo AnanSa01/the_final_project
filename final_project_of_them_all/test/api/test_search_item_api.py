@@ -41,8 +41,5 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(products[0]["name"], self.config["search_for_item"])
 
 
-
-
-
 if __name__ == '__main__':
     unittest.main()

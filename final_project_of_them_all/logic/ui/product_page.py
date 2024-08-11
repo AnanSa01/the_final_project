@@ -1,3 +1,5 @@
+import time
+
 from selenium.common.exceptions import *
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
@@ -30,10 +32,10 @@ class ProductPage(BasePageApp):
         self._rating_input.click()
 
     def return_review_text(self):
+        time.sleep(1)
         WebDriverWait(self._driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, self.REVIEW_TEXT)))
         self._review_text = self._driver.find_element(By.XPATH, self.REVIEW_TEXT)
-        print(self._review_text.text)
         return self._review_text.text
 
     def click_add_to_cart_in_quantity_flow(self, quantity_input):
