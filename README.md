@@ -51,6 +51,7 @@ the_final_project/
 │   └── ui/
 ├── reports/
 └── README.md
+
 5. 
 📊 Allure Reporting
 Install Allure
