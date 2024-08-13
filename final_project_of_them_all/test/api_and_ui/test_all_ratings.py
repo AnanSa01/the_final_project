@@ -30,7 +30,6 @@ class MyTestCase(unittest.TestCase):
 
         Closes the browser after test execution.
         """
-        logging.info(f'End of test.\n')
         self.driver.close()
 
     def test_all_ratings(self):
@@ -65,7 +64,8 @@ class MyTestCase(unittest.TestCase):
 
         # Check if all ratings are correctly reflected in the UI
         list_with_result_of_five_tests = self.all_ratings.check_all_ratings_for_item(self.driver, all_details_updated)
-        self.assertTrue(all(list_with_result_of_five_tests))
+        details_with_result = list_with_result_of_five_tests + all_details_updated
+        self.assertTrue(all(list_with_result_of_five_tests), details_with_result)
 
 
 if __name__ == '__main__':

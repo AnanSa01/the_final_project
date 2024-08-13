@@ -29,8 +29,6 @@ class MyTestCase(unittest.TestCase):
             my_jira.create_issue('TEST', 'test_update_personal_information',
                                  'I found a bug in this test')
 
-        logging.info(f'End of test.\n')
-
     def test_search_for_item_api(self):
         """
         Test case for updating profile information through the API.

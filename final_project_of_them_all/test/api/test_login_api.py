@@ -23,7 +23,6 @@ class MyTestCase(unittest.TestCase):
 
         Placeholder for any cleanup tasks after tests. Currently, no operations are defined.
         """
-        logging.info(f'End of test.\n')
 
     def test_valid_login_api(self):
         """

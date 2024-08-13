@@ -1,3 +1,4 @@
+import logging
 import random
 
 from selenium.webdriver.common.by import By
@@ -45,9 +46,12 @@ class AllRatings(BasePageApp):
             # Prepare payload for API request
             payload = {"rating": rating, "comment": comment}
 
-            # Send API request to add rating with ID and payload we prepared from last line.
-            api_rate_one = AddRating(request)
-            api_rate_one.add_rating_api(item_id, payload)
+            try:
+                # Send API request to add rating with ID and payload we prepared from last line.
+                api_rate_one = AddRating(request)
+                api_rate_one.add_rating_api(item_id, payload)
+            except:
+                logging.log("add_rating_api didn't work as usual")
 
             # Store details of the rated item in a list.
             # Name attribute is unavailable here. To include it,
