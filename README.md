@@ -28,7 +28,8 @@ cd the_final_project
 ### 2. Set Up the Virtual Environment
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scriptsctivate`
+venv\Scripts\activate # On Windows use
+source venv/bin/activate  # On MacOS use
 ```
 
 ### 3. Install Dependencies
