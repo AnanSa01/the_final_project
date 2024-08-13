@@ -110,6 +110,6 @@ We welcome contributions! Here’s how you can get involved:
 ## 📬 Contact Information
 For now, placeholder info. Update it later!
 
-- **Name:** Anan Sabek
+- **Name:** Anan
 - **Email:** an.sabek01@gmail.com
 - **GitHub:** [AnanSa01](https://github.com/AnanSa01/the_final_project)
