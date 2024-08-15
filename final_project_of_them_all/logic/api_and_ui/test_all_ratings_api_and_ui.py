@@ -50,8 +50,8 @@ class AllRatings(BasePageApp):
                 # Send API request to add rating with ID and payload we prepared from last line.
                 api_rate_one = AddRating(request)
                 api_rate_one.add_rating_api(item_id, payload)
-            except:
-                logging.log("add_rating_api didn't work as usual")
+            except Exception:
+                logging.error(f"Failed to rate item {item_id}")
 
             # Store details of the rated item in a list.
             # Name attribute is unavailable here. To include it,
