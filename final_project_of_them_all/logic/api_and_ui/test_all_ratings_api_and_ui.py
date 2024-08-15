@@ -87,12 +87,13 @@ class AllRatings(BasePageApp):
         """
         list_check_true = []
 
+        self.search_page = SearchPage(driver)
+        self.product_page = ProductPage(driver)
+
         for i in range(self.config["in_range"]):
             # Search for the product and check if the review text matches
             self.search_flow(all_details_updated[i]["name_item"])
-            self.search_page = SearchPage(driver)
             self.search_page.click_on_first_result()
-            self.product_page = ProductPage(driver)
 
             # Check if each comment from API request IS IN the comment section from UI, and append TRUE/FALSE to list.
             list_check_true.append(all_details_updated[i]["comment"] in self.product_page.return_review_text())
@@ -100,3 +101,20 @@ class AllRatings(BasePageApp):
             self.refresh_page()
 
         return list_check_true
+
+    def get_false_details(self, all_details, list_results):
+        """
+        Identifies and returns details of items with incorrect ratings or comments.
+
+        :param all_details: List of item details including ID, rating, comment, and index.
+        :param list_results: List of boolean values indicating whether the ratings and comments are correctly displayed.
+        :return: List of dictionaries containing names of items with incorrect results.
+        """
+        false_list = []
+        i = 0
+        for result in list_results:
+            if not result:
+                false_list.append({"False": all_details[i]["name_item"]})
+                i += 1
+
+        return false_list

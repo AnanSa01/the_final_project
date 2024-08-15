@@ -62,10 +62,11 @@ class MyTestCase(unittest.TestCase):
         # Gather updated rating details including new ratings and reviews for the items
         all_details_updated = self.all_ratings.gather_all_details_for_items(all_details, products)
 
-        # Check if all ratings are correctly reflected in the UI
+        # Assert all comments match in the UI; show mismatches if any.
         list_with_result_of_five_tests = self.all_ratings.check_all_ratings_for_item(self.driver, all_details_updated)
-        details_with_result = list_with_result_of_five_tests + all_details_updated
-        self.assertTrue(all(list_with_result_of_five_tests), details_with_result)
+
+        self.assertTrue(all(list_with_result_of_five_tests),
+                        msg=self.all_ratings.get_false_details(all_details_updated, list_with_result_of_five_tests))
 
 
 if __name__ == '__main__':
