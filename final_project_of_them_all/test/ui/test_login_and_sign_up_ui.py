@@ -1,7 +1,6 @@
 import logging
 import unittest
 
-from final_project_of_them_all.infra.logging_basicConfig import LoggingSetup
 from final_project_of_them_all.infra.ui.browser_wrapper import BrowserWrapper
 from final_project_of_them_all.logic.ui.home_page import HomePage
 from final_project_of_them_all.logic.utilities import LoadJSON
