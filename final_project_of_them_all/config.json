@@ -2,7 +2,6 @@
   "base_url": "http://127.0.0.1:8000",
   "base_url_login": "http://127.0.0.1:8000/#/login",
   "browser": "Chrome",
-  "header": {"authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyNzkzNzUyLCJpYXQiOjE3MzAyMDE3NTIsImp0aSI6IjRmZmFjMmIzYWE5YjQ4NWFiMmRjMWQ4OWQ0NjY1YmVmIiwidXNlcl9pZCI6OCwidXNlcm5hbWUiOiJhYWFmb3J0ZXN0aW5nQGdtYWlsLmNvbSIsIm1lc3NhZ2UiOiJIZWxsbyBQcm9zaG9wIn0.XOt2BYBC1vF4JzDzaPINiTzfry4e3lRfMOmnn0t-9Lw"},
   "name_input": "abcd",
   "last_name_input": "efgh",
   "update_name_input": "bbbbb",

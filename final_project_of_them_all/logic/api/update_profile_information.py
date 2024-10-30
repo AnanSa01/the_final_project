@@ -1,4 +1,4 @@
-from final_project_of_them_all.logic import utilities as UT
+from final_project_of_them_all.logic.utilities import LoadCon
 
 
 class UpdateProfileInformation:
@@ -8,11 +8,12 @@ class UpdateProfileInformation:
         :param request: request to get API data
         """
         self._request = request
-        self.config = UT.LoadCon.return_config()
+        self.config = LoadCon.return_config()
+        self.secret = LoadCon.return_secret()
 
     def update_profile_information_api(self, payload):
         """
         this function returns given recommendations using GET
         """
         return self._request.put_request(
-            f"{self.config["base_url"]}/api/users/profile/update", self.config["header"], payload)
+            f"{self.config["base_url"]}/api/users/profile/update", self.secret["header"], payload)

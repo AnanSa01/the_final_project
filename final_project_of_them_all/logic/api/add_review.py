@@ -10,9 +10,11 @@ class AddRating:
         """
         self._request = request
         self.config = LoadCon.return_config()
+        self.secret = LoadCon.return_secret()
 
     def add_rating_api(self, item_id, payload):
         """
         this function returns given recommendations using GET
         """
-        return self._request.post_request(f"{self.config["base_url"]}/api/products/{item_id}/reviews/", self.config["header"], payload)
+        return self._request.post_request(f"{self.config["base_url"]}/api/products/{item_id}/reviews/",
+                                             self.secret["header"], payload)
