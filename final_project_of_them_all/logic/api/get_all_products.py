@@ -1,16 +1,19 @@
+from final_project_of_them_all.logic.api._base_init import BaseInit
 from final_project_of_them_all.logic.utilities import LoadCon
 
 
-class Products:
+class Products(BaseInit):
+
+    BASE_ENDPOINT_PRODUCTS = "/api/products/"
+
     def __init__(self, request):
         """
-        Initialize the Products class with API request and configuration.
+        All logic classes now share the same __init__ method by inheriting from a common base class.
+        This refactor improves code efficiency by avoiding duplicate initialization code.
 
-        :param request: API request object for making API calls
+        :param request: The request object used to fetch API data.
         """
-        self._request = request
-        self.config = LoadCon.return_config()
-        self.secret = LoadCon.return_secret()
+        super().__init__(request)
 
     def get_products_api(self):
         """
@@ -18,5 +21,5 @@ class Products:
 
         :return: Response object containing the list of products
         """
-        return self._request.get_request(
-            f"{self.config['base_url']}/api/products/", self.secret["header"])
+        return self._request.get_request(f"{self.config['base_url']}{self.BASE_ENDPOINT_PRODUCTS}",
+                                            self.secret["header"])

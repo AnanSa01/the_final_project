@@ -111,10 +111,8 @@ class AllRatings(BasePageApp):
         :return: List of dictionaries containing names of items with incorrect results.
         """
         false_list = []
-        i = 0
-        for result in list_results:
+        for i, result in enumerate(list_results):
             if not result:
-                false_list.append({"False": [all_details[i]["id"] ,all_details[i]["name_item"]]})
-                i += 1
+                false_list.append({"False": [all_details[i]["id"], all_details[i]["name_item"]]})
 
         return false_list
