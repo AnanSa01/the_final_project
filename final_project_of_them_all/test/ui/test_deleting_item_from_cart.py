@@ -58,6 +58,5 @@ class MyTestCase(unittest.TestCase):
         self.assertTrue(self.cart_page.return_true_if_cart_is_empty())
 
 
-
 if __name__ == '__main__':
     unittest.main()

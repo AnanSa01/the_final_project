@@ -114,7 +114,7 @@ class AllRatings(BasePageApp):
         i = 0
         for result in list_results:
             if not result:
-                false_list.append({"False": all_details[i]["name_item"]})
+                false_list.append({"False": [all_details[i]["id"] ,all_details[i]["name_item"]]})
                 i += 1
 
         return false_list

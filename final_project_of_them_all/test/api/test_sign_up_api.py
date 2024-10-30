@@ -63,6 +63,5 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(result_of_sign_up.body["detail"], self.config["message_invalid_sign_up"])
 
 
-
 if __name__ == '__main__':
     unittest.main()

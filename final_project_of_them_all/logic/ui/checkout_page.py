@@ -31,7 +31,7 @@ class CheckoutPage(BasePageApp):
     BILLING_ZIP_CODE_INPUT = '//input[@id="billingAddress.postcode"]'
     BILLING_MOBILE_INPUT = '//input[@id="phone"]'
     BILLING_EMAIL_INPUT = '//input[@id="email"]'
-    BILLING_SUBMIT_BUTTON = '//form//div//button[contains(text(), "Pay Now")]'
+    BILLING_SUBMIT_BUTTON = '//button[@id="submit-button"]'
     IFRAME_CARD_FORM = '//iframe[@title="paypal_card_form"]'
     BILLING_SUCCESS = '//div[@class="fade alert alert-success show"]'
     ORDER_DETAILS = '/html/body/div/div/main/div/div[2]/div[1]/div/div[3]/div/div/div/div[3]'
@@ -138,7 +138,7 @@ class CheckoutPage(BasePageApp):
         """
         # Ensure the submit button is visible and select the country
         change_country = WebDriverWait(self._driver, 20).until(
-            EC.presence_of_element_located((By.XPATH, self.BILLING_SUBMIT_BUTTON)))
+            EC.presence_of_element_located((By.XPATH, self.BILLING_COUNTRY_BUTTON)))
 
         # Scroll to the submit button to make sure the dropdown is visible
         self._driver.execute_script("arguments[0].scrollIntoView();", change_country)
