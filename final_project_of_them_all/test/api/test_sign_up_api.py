@@ -3,7 +3,7 @@ import unittest
 
 from final_project_of_them_all.infra.api.api_wrapper import APIWrapper
 from final_project_of_them_all.logic.api.singing_up import SigningUp
-from final_project_of_them_all.logic.utilities import LoadCon
+from final_project_of_them_all.logic.utilities import LoadJSON
 from final_project_of_them_all.infra.utilities import Utilities as IUT
 
 
@@ -16,7 +16,7 @@ class MyTestCase(unittest.TestCase):
         Initializes the APIWrapper for handling API requests and loads configuration data from a JSON file.
         """
         self._api_request = APIWrapper()
-        self.config = LoadCon.return_config()
+        self.config = LoadJSON.return_config()
 
     def tearDown(self):
         """
@@ -36,10 +36,12 @@ class MyTestCase(unittest.TestCase):
         requirement #: 001
         """
         logging.info("Initialize Test: valid sign up with API")
+
         api_signing_up = SigningUp(self._api_request)
-        name = IUT.generate_random_string_just_text(8)
-        email = IUT.generate_random_string_text_with_numbers(8) + self.config["emails_to_generate"]
-        password = IUT.generate_random_string_just_numbers(8)
+        name = IUT.generate_random_string_just_text(self.config["generated_numbers"])
+        email = (IUT.generate_random_string_text_with_numbers(self.config["generated_numbers"]) +
+                 self.config["emails_to_generate"])
+        password = IUT.generate_random_string_just_numbers(self.config["generated_numbers"])
         payload_of_sign_up = {"name": name, "email": email, "password": password}
         result_of_sign_up = api_signing_up.signing_up_api(payload_of_sign_up)
         self.assertEqual(result_of_sign_up.status_code, self.config["success_response"])
@@ -55,6 +57,7 @@ class MyTestCase(unittest.TestCase):
         requirement #: 003
         """
         logging.info("Initialize Test: invalid sign up with API")
+
         api_signing_up = SigningUp(self._api_request)
         payload_of_invalid_sign_up = self.config["payload_for_login_api"]
         result_of_sign_up = api_signing_up.signing_up_api(payload_of_invalid_sign_up)

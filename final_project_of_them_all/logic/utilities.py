@@ -7,7 +7,7 @@ from final_project_of_them_all.infra.config_provider import ConfigProvider
 
 
 
-class LoadCon:
+class LoadJSON:
     """
     this function to load the json file in a fast and efficient way
     """

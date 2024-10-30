@@ -2,14 +2,13 @@ import logging
 import unittest
 
 from final_project_of_them_all.infra.api.api_wrapper import APIWrapper
-from final_project_of_them_all.infra.config_provider import ConfigProvider
 from final_project_of_them_all.infra.ui.browser_wrapper import BrowserWrapper
 from final_project_of_them_all.logic.api.add_review import AddRating
 from final_project_of_them_all.logic.ui.home_page import HomePage
 from final_project_of_them_all.logic.ui.login_page import LoginPage
 from final_project_of_them_all.logic.ui.product_page import ProductPage
 from final_project_of_them_all.logic.ui.search_page import SearchPage
-from final_project_of_them_all.logic.utilities import LoadCon
+from final_project_of_them_all.logic.utilities import LoadJSON
 
 
 class MyTestCase(unittest.TestCase):
@@ -21,7 +20,7 @@ class MyTestCase(unittest.TestCase):
         Initializes APIWrapper for API requests and loads configuration data from a JSON file.
         """
         self._api_request = APIWrapper()
-        self.config = LoadCon.return_config()
+        self.config = LoadJSON.return_config()
 
     def tearDown(self):
         """
@@ -29,8 +28,8 @@ class MyTestCase(unittest.TestCase):
 
         Closes the browser and performs any necessary cleanup tasks.
         """
-        logging.info(f'End of test.\n')
         self.driver.quit()
+        logging.info(f'End of test. {self.config["browser"]} web driver is closed.\n')
 
     def test_add_review_api_and_ui_poc(self):
         """

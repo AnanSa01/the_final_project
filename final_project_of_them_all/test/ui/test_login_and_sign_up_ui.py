@@ -4,7 +4,7 @@ import unittest
 from final_project_of_them_all.infra.logging_basicConfig import LoggingSetup
 from final_project_of_them_all.infra.ui.browser_wrapper import BrowserWrapper
 from final_project_of_them_all.logic.ui.home_page import HomePage
-from final_project_of_them_all.logic import utilities as UT
+from final_project_of_them_all.logic.utilities import LoadJSON
 from final_project_of_them_all.infra.utilities import Utilities
 from final_project_of_them_all.logic.ui.login_page import LoginPage
 from final_project_of_them_all.logic.ui.sign_up_page import SignUpPage
@@ -32,7 +32,7 @@ class MyTestCase(unittest.TestCase):
         """
         # ARRANGE
         self.browser = BrowserWrapper()
-        self.config = UT.LoadCon.return_config()
+        self.config = LoadJSON.return_config()
         self.driver = self.browser.get_driver(self.config["base_url_login"])
         self.login_page = LoginPage(self.driver)
 

@@ -4,7 +4,7 @@ import unittest
 from final_project_of_them_all.infra.api.api_wrapper import APIWrapper
 from final_project_of_them_all.infra.jira_handler import JiraHandler
 from final_project_of_them_all.logic.api.update_profile_information import UpdateProfileInformation
-from final_project_of_them_all.logic.utilities import LoadCon
+from final_project_of_them_all.logic.utilities import LoadJSON
 
 
 class MyTestCase(unittest.TestCase):
@@ -15,7 +15,7 @@ class MyTestCase(unittest.TestCase):
         Initializes the API wrapper and loads configuration data.
         """
         self._api_request = APIWrapper()
-        self.config = LoadCon.return_config()
+        self.config = LoadJSON.return_config()
         self.fail = False
 
     def tearDown(self):
@@ -28,6 +28,7 @@ class MyTestCase(unittest.TestCase):
             my_jira = JiraHandler()
             my_jira.create_issue('TEST', 'test_update_personal_information',
                                  'I found a bug in this test')
+        logging.info(f'End of test.\n')
 
     def test_search_for_item_api(self):
         """
@@ -51,7 +52,7 @@ class MyTestCase(unittest.TestCase):
             self.assertEqual(result_update_profile_information.status_code, self.config["success_response"])
         except:
             self.fail = True
-            raise AssertionError
+            raise AssertionError("Failed to update personal profile information")
 
 
 if __name__ == '__main__':

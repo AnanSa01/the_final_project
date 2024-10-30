@@ -1,9 +1,7 @@
 from final_project_of_them_all.logic.api._base_init import BaseInit
-from final_project_of_them_all.logic.utilities import LoadCon
 
 
 class Products(BaseInit):
-
     BASE_ENDPOINT_PRODUCTS = "/api/products/"
 
     def __init__(self, request):
@@ -22,4 +20,4 @@ class Products(BaseInit):
         :return: Response object containing the list of products
         """
         return self._request.get_request(f"{self.config['base_url']}{self.BASE_ENDPOINT_PRODUCTS}",
-                                            self.secret["header"])
+                                         self.secret["header"])

@@ -1,14 +1,14 @@
 import logging
 import random
 import unittest
-from final_project_of_them_all.logic import utilities as UT
+
+from final_project_of_them_all.logic.utilities import LoadJSON
 from final_project_of_them_all.infra.ui.browser_wrapper import BrowserWrapper
 from final_project_of_them_all.logic.ui.cart_page import CartPage
 from final_project_of_them_all.logic.ui.checkout_page import CheckoutPage
 from final_project_of_them_all.logic.ui.home_page import HomePage
 from final_project_of_them_all.logic.ui.login_page import LoginPage
 from final_project_of_them_all.logic.ui.product_page import ProductPage
-from selenium.webdriver.support.ui import Select
 
 
 class MyTestCase(unittest.TestCase):
@@ -20,7 +20,7 @@ class MyTestCase(unittest.TestCase):
         Initializes the browser, loads configuration data, and performs login.
         """
         self.browser = BrowserWrapper()
-        self.config = UT.LoadCon.return_config()
+        self.config = LoadJSON.return_config()
         self.driver = self.browser.get_driver(self.config["base_url_login"])
         self.login_page = LoginPage(self.driver)
         self.login_page.login_flow(self.config["email_input"], self.config["password_input"])

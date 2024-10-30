@@ -1,14 +1,14 @@
 from jira import JIRA
 
 
-from final_project_of_them_all.logic.utilities import LoadCon
+from final_project_of_them_all.logic.utilities import LoadJSON
 
 
 class JiraHandler:
 
     def __init__(self):
         self._jira_url = 'https://ansabek01.atlassian.net/'
-        secret = LoadCon.return_secret()
+        secret = LoadJSON.return_secret()
         self._auth_jira = JIRA(
             basic_auth=('an.sabek01@gmail.com', secret["jira_token"]),
             options={'server': self._jira_url}

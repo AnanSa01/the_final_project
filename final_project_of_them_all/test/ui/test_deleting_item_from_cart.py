@@ -5,7 +5,7 @@ from final_project_of_them_all.logic.ui.cart_page import CartPage
 from final_project_of_them_all.logic.ui.home_page import HomePage
 from final_project_of_them_all.logic.ui.login_page import LoginPage
 from final_project_of_them_all.logic.ui.product_page import ProductPage
-from final_project_of_them_all.logic.utilities import LoadCon
+from final_project_of_them_all.logic.utilities import LoadJSON
 
 
 class MyTestCase(unittest.TestCase):
@@ -17,7 +17,7 @@ class MyTestCase(unittest.TestCase):
         Initializes the browser, loads configuration data, and performs login.
         """
         self.browser = BrowserWrapper()
-        self.config = LoadCon.return_config()
+        self.config = LoadJSON.return_config()
         self.driver = self.browser.get_driver(self.config["base_url_login"])
         self.login_page = LoginPage(self.driver)
         self.login_page.login_flow(self.config["email_input"], self.config["password_input"])

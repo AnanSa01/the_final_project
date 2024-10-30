@@ -49,7 +49,7 @@ class CheckoutPage(BasePageApp):
             self._continue_button = self._driver.find_element(By.XPATH, self.CONTINUE_BUTTON)
 
         except NoSuchElementException:
-            logging.info("Error in initializing CheckoutPage")
+            raise ElementNotFoundException("Element is not found in CheckoutPage.")
 
     def write_in_address_input(self, address):
         """

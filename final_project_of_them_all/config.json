@@ -40,6 +40,8 @@
   "random_from": 1,
   "random_to": 10,
   "in_range": 5,
-  "id_split": 5
+  "id_split": 5,
+  "generated_numbers": 8,
+  "item_place": 0
 
 }

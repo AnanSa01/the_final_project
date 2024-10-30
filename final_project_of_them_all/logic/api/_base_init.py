@@ -1,4 +1,4 @@
-from final_project_of_them_all.logic.utilities import LoadCon
+from final_project_of_them_all.logic.utilities import LoadJSON
 
 
 class BaseInit:
@@ -14,5 +14,5 @@ class BaseInit:
     """
     def __init__(self, request):
         self._request = request
-        self.config = LoadCon.return_config()
-        self.secret = LoadCon.return_secret()
+        self.config = LoadJSON.return_config()
+        self.secret = LoadJSON.return_secret()

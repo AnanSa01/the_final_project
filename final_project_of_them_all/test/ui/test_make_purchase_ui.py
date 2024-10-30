@@ -1,7 +1,7 @@
 import logging
 import time
 import unittest
-from final_project_of_them_all.logic.utilities import LoadCon
+from final_project_of_them_all.logic.utilities import LoadJSON
 from final_project_of_them_all.infra.utilities import Utilities as IUT
 from final_project_of_them_all.infra.ui.browser_wrapper import BrowserWrapper
 from final_project_of_them_all.logic.ui.cart_page import CartPage
@@ -21,7 +21,7 @@ class MyTestCase(unittest.TestCase):
         Initializes the browser, loads configuration data, and performs login.
         """
         self.browser = BrowserWrapper()
-        self.config = LoadCon.return_config()
+        self.config = LoadJSON.return_config()
         self.driver = self.browser.get_driver(self.config["base_url_login"])
         self.login_page = LoginPage(self.driver)
         self.login_page.login_flow(self.config["email_input"], self.config["password_input"])

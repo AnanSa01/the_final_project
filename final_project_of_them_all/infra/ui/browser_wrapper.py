@@ -2,7 +2,7 @@ import logging
 
 from selenium import webdriver
 from selenium.common.exceptions import *
-from final_project_of_them_all.logic import utilities as UT
+from final_project_of_them_all.logic.utilities import LoadJSON
 
 
 class BrowserWrapper:
@@ -14,7 +14,7 @@ class BrowserWrapper:
         self._driver = None
         try:
 
-            self.config = UT.LoadCon.return_config()
+            self.config = LoadJSON.return_config()
         except NoSuchElementException:
             logging.error("Error in finding element in BrowserWrapper")
         print("\nTest Start")

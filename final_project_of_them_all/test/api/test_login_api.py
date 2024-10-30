@@ -2,7 +2,7 @@ import logging
 import unittest
 
 from final_project_of_them_all.infra.api.api_wrapper import APIWrapper
-from final_project_of_them_all.logic import utilities as UT
+from final_project_of_them_all.logic.utilities import LoadJSON
 from final_project_of_them_all.logic.api.login import SigningIn
 
 
@@ -15,7 +15,7 @@ class MyTestCase(unittest.TestCase):
         Initializes the APIWrapper to handle API requests and loads configuration data from a JSON file.
         """
         self._api_request = APIWrapper()
-        self.config = UT.LoadCon.return_config()
+        self.config = LoadJSON.return_config()
 
     def tearDown(self):
         """
@@ -23,6 +23,7 @@ class MyTestCase(unittest.TestCase):
 
         Placeholder for any cleanup tasks after tests. Currently, no operations are defined.
         """
+        logging.info(f'End of test.\n')
 
     def test_valid_login_api(self):
         """

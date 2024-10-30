@@ -1,12 +1,13 @@
 import logging
 import unittest
+
 from final_project_of_them_all.infra.api.api_wrapper import APIWrapper
 from final_project_of_them_all.infra.ui.browser_wrapper import BrowserWrapper
 from final_project_of_them_all.logic.api.get_all_products import Products
 from final_project_of_them_all.logic.api_and_ui.test_all_ratings_api_and_ui import AllRatings
 from final_project_of_them_all.logic.ui.home_page import HomePage
 from final_project_of_them_all.logic.ui.login_page import LoginPage
-from final_project_of_them_all.logic.utilities import LoadCon
+from final_project_of_them_all.logic.utilities import LoadJSON
 
 
 class MyTestCase(unittest.TestCase):
@@ -17,7 +18,7 @@ class MyTestCase(unittest.TestCase):
         Initializes the API wrapper, browser, configuration data, and performs login.
         """
         self._api_request = APIWrapper()
-        self.config = LoadCon.return_config()
+        self.config = LoadJSON.return_config()
         self.browser = BrowserWrapper()
         self.driver = self.browser.get_driver(self.config["base_url_login"])
         self.login_page = LoginPage(self.driver)
@@ -31,6 +32,7 @@ class MyTestCase(unittest.TestCase):
         Closes the browser after test execution.
         """
         self.driver.close()
+        logging.info(f'End of test. {self.config["browser"]} web driver is closed.\n')
 
     def test_all_ratings(self):
         """
@@ -48,7 +50,7 @@ class MyTestCase(unittest.TestCase):
         test case   #: 013
         requirement #: 004
         """
-        logging.info("Initialize Test: verify different ratings for multiple items. with API & UI - POC")
+        logging.info("Initialize Test: verify different ratings for multiple items. with API & UI")
 
         # Get IDs of all items through UI, and rate five random items with ratings from 1 to 5 with API.
         self.all_ratings = AllRatings(self.driver)

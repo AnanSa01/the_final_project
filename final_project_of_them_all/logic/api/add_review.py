@@ -1,10 +1,7 @@
-from final_project_of_them_all.infra.config_provider import ConfigProvider
 from final_project_of_them_all.logic.api._base_init import BaseInit
-from final_project_of_them_all.logic.utilities import LoadCon
 
 
 class AddRating(BaseInit):
-
     BASE_ENDPOINT_PRODUCT = "/api/products/"
     ENDPOINT_REVIEWS = "/reviews/"
 

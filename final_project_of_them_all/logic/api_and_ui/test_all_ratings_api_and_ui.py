@@ -8,7 +8,7 @@ from final_project_of_them_all.logic.ui.base_page_app import BasePageApp
 from final_project_of_them_all.logic.ui.home_page import HomePage
 from final_project_of_them_all.logic.ui.product_page import ProductPage
 from final_project_of_them_all.logic.ui.search_page import SearchPage
-from final_project_of_them_all.logic.utilities import LoadCon
+from final_project_of_them_all.logic.utilities import LoadJSON
 
 
 class AllRatings(BasePageApp):
@@ -23,7 +23,7 @@ class AllRatings(BasePageApp):
         """
         # Find all item elements on the page
         self._all_items = self._driver.find_elements(By.XPATH, self.ITEM_TITLE)
-        self.config = LoadCon.return_config()
+        self.config = LoadJSON.return_config()
         already_selected_items = []
         all_details = []
 
