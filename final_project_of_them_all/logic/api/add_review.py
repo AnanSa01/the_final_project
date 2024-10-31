@@ -1,4 +1,4 @@
-from final_project_of_them_all.logic.api._base_init import BaseInit
+from final_project_of_them_all.logic.api._base_init_for_api import BaseInit
 
 
 class AddRating(BaseInit):
