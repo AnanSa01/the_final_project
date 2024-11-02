@@ -17,7 +17,6 @@ class LoginPage(BasePageApp):
     def __init__(self, driver):
         super().__init__(driver)
         try:
-            logging.info("hello")
             self._email_input = self._driver.find_element(By.XPATH, self.EMAIL_INPUT)
             self._password_input = self._driver.find_element(By.XPATH, self.PASSWORD_INPUT)
             self._sign_in_button = self._driver.find_element(By.XPATH, self.SIGN_IN_BUTTON)
